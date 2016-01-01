@@ -9,7 +9,9 @@ using System;
 namespace EhouarnPerret.CSharp.HackerRank.Sandbox.DaysOfCode
 {
     /// <summary>
-    /// The code below stinks but it is accepted seriously HackerRank...
+    /// The code below stinks but it has been accepted by HackerRank...
+    /// Actually a better solution was refused...
+    /// Starting to wonder about the relevancy of such tests
     /// </summary>
     public static class Day1DataTypesSolution
     {
@@ -31,6 +33,7 @@ namespace EhouarnPerret.CSharp.HackerRank.Sandbox.DaysOfCode
             foreach(var value in values)
             {
                 var valueType = value.GetType();
+
                 var valueTypeCategory = valueType.IsPrimitive ? @"Primitive" : "Referenced";
 
                 var valueTypeName = String.Empty;
