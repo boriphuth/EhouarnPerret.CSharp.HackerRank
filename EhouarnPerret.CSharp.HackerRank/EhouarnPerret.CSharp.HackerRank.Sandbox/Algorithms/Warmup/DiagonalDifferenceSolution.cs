@@ -8,11 +8,9 @@ using System;
 
 namespace EhouarnPerret.CSharp.HackerRank.Sandbox.Algorithms.Warmup
 {
-    public class DiagonalDifferenceSolution
+    public static class DiagonalDifferenceSolution
     {
-        public DiagonalDifferenceSolution()
-        {
-        }
+       
     }
 }
 

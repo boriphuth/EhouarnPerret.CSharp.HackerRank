@@ -8,7 +8,7 @@ using System;
 
 namespace EhouarnPerret.CSharp.HackerRank.Sandbox.DaysOfCode
 {
-    public static class Solution
+    public static class Day0PrintHelloWorldSolution
     {
         public static void Main(params String[] arguments)
         {
