@@ -25,33 +25,52 @@
 // THE SOFTWARE.
 using System;
 
-namespace EhouarnPerret.CSharp.HackerRank.Sandbox.Algorithms.Warmup.Challenge3DiagonalDifference
+namespace EhouarnPerret.CSharp.HackerRank.Sandbox.Algorithms.Warmup.Challenge4PlusMinus
 {
     public static class Solution
     {
-        public static void Main(params String[] arguments) 
+        public static void Main(params String[] args) 
         {
-            var matrixSize = Convert.ToInt32(Console.ReadLine());
+            var number = Convert.ToInt32(Console.ReadLine());   
 
-            var primaryDiagonalSum = 0;
-            var secondaryDiagonalSum = 0;
+            var tokens = Console.ReadLine().Split(new [] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
 
-            for(var matrixRowIndex = 0; matrixRowIndex < matrixSize; matrixRowIndex++)
+            if (tokens.Length != number)
             {
-                var matrixRowStringTokens = Console.ReadLine().Split(new [] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
-
-                if (matrixRowStringTokens.Length != matrixSize)
-                {
-                    throw new FormatException();
-                }
-                else
-                {
-                    primaryDiagonalSum += Convert.ToInt32(matrixRowStringTokens[matrixRowIndex]);
-                    secondaryDiagonalSum += Convert.ToInt32(matrixRowStringTokens[matrixSize - 1 - matrixRowIndex]);
-                }
+                throw new FormatException();
             }
+            else
+            {
+                var numbers = Array.ConvertAll(tokens, Int32.Parse);
 
-            Console.WriteLine(Math.Abs(primaryDiagonalSum - secondaryDiagonalSum));
+                var positiveCount = 0u;
+
+                var negativeCount = 0u;
+
+                var zeroCount = 0u;
+
+                foreach (var item in numbers) 
+                {
+                    if (item > 0)
+                    {
+                        positiveCount++;
+                    }
+                    else if (item < 0)
+                    {
+                        negativeCount++;
+                    }
+                    else // if (item == 0)
+                    {
+                        zeroCount++;
+                    }
+                }
+
+                var floatingNumber = Convert.ToDouble(number);
+
+                Console.WriteLine(positiveCount / floatingNumber);
+                Console.WriteLine(negativeCount / floatingNumber);
+                Console.WriteLine(zeroCount / floatingNumber);
+            }
         }
     }
 }

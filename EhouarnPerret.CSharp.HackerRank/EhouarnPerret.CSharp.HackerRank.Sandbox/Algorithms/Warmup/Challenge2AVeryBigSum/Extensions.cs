@@ -30,7 +30,6 @@ using System.Collections.Generic;
 
 namespace EhouarnPerret.CSharp.HackerRank.Sandbox.Algorithms.Warmup.Challenge2AVeryBigSum
 {
-
     public static class Extensions
     {
         public static BigInteger Sum(this IEnumerable<BigInteger> source)

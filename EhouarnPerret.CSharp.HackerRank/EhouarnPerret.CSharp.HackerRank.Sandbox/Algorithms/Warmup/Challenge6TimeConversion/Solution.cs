@@ -24,34 +24,24 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
+using System.Globalization;
 
-namespace EhouarnPerret.CSharp.HackerRank.Sandbox.Algorithms.Warmup.Challenge3DiagonalDifference
+namespace EhouarnPerret.CSharp.HackerRank.Sandbox.Algorithms.Warmup.Challenge6TimeConversion
 {
     public static class Solution
     {
         public static void Main(params String[] arguments) 
         {
-            var matrixSize = Convert.ToInt32(Console.ReadLine());
+            var dateTimeString = Console.ReadLine();
 
-            var primaryDiagonalSum = 0;
-            var secondaryDiagonalSum = 0;
+            // Let's make it broad, I mean the problem statement is actually kinda blurry here
+            // Do you want to throw an exception if the input is using the wrong format?
+            // Or just use some dummy default value (IMHO that sucks)
+            // Anyway, let's the .NET framework take (good) care of that...
+            var dateTime = DateTime.ParseExact(dateTimeString, @"hh:mm:sstt", CultureInfo.InvariantCulture);
 
-            for(var matrixRowIndex = 0; matrixRowIndex < matrixSize; matrixRowIndex++)
-            {
-                var matrixRowStringTokens = Console.ReadLine().Split(new [] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
-
-                if (matrixRowStringTokens.Length != matrixSize)
-                {
-                    throw new FormatException();
-                }
-                else
-                {
-                    primaryDiagonalSum += Convert.ToInt32(matrixRowStringTokens[matrixRowIndex]);
-                    secondaryDiagonalSum += Convert.ToInt32(matrixRowStringTokens[matrixSize - 1 - matrixRowIndex]);
-                }
-            }
-
-            Console.WriteLine(Math.Abs(primaryDiagonalSum - secondaryDiagonalSum));
+            // MS Edge support aw    
+            Console.WriteLine(dateTime.ToString(@"HH:mm:ss"));    
         }
     }
 }

@@ -24,34 +24,30 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
+using System.Text;
 
-namespace EhouarnPerret.CSharp.HackerRank.Sandbox.Algorithms.Warmup.Challenge3DiagonalDifference
+namespace EhouarnPerret.CSharp.HackerRank.Sandbox.Algorithms.Warmup.Challenge5StairCase
 {
     public static class Solution
     {
         public static void Main(params String[] arguments) 
         {
-            var matrixSize = Convert.ToInt32(Console.ReadLine());
+            var number = Convert.ToInt32(Console.ReadLine());   
 
-            var primaryDiagonalSum = 0;
-            var secondaryDiagonalSum = 0;
+            var stringBuilder = new StringBuilder();
 
-            for(var matrixRowIndex = 0; matrixRowIndex < matrixSize; matrixRowIndex++)
+            const Char whiteSpace = ' ';
+            const Char sharp = '#';
+
+            stringBuilder.Append(whiteSpace, number - 1);
+            stringBuilder.Append(sharp, 1);
+
+            for (var i = 0; i < number; i++) 
             {
-                var matrixRowStringTokens = Console.ReadLine().Split(new [] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
-
-                if (matrixRowStringTokens.Length != matrixSize)
-                {
-                    throw new FormatException();
-                }
-                else
-                {
-                    primaryDiagonalSum += Convert.ToInt32(matrixRowStringTokens[matrixRowIndex]);
-                    secondaryDiagonalSum += Convert.ToInt32(matrixRowStringTokens[matrixSize - 1 - matrixRowIndex]);
-                }
+                Console.WriteLine(stringBuilder.ToString());
+                stringBuilder.Remove(0, 1);
+                stringBuilder.Append(sharp);
             }
-
-            Console.WriteLine(Math.Abs(primaryDiagonalSum - secondaryDiagonalSum));
         }
     }
 }
