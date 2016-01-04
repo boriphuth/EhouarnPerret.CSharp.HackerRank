@@ -9,9 +9,9 @@ using System.Linq;
 using System.Diagnostics.Contracts;
 using System.Diagnostics;
 
-namespace EhouarnPerret.CSharp.HackerRank.Sandbox.Algorithms.Warmup
+namespace EhouarnPerret.CSharp.HackerRank.Sandbox.Algorithms.Warmup.Challenge1SimpleArraySum
 {
-    public static class SimpleArraySumSolution
+    public static class Solution
     {
         public static void Main(params String[] arguments) 
         {

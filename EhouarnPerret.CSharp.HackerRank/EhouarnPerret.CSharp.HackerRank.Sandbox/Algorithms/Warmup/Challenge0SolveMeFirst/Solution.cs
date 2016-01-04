@@ -6,9 +6,9 @@
 // Copyright: ART logics © All Rights Reserved.
 using System;
 
-namespace EhouarnPerret.CSharp.HackerRank.Sandbox.Algorithms.Warmup
+namespace EhouarnPerret.CSharp.HackerRank.Sandbox.Algorithms.Warmup.Challenge0SolveMeFirst
 {
-    public static class SolveMeFirstSolution 
+    public static class Solution 
     {
         private static Int32 SolveMeFirst(Int32 a, Int32 b) 
         { 
@@ -22,7 +22,7 @@ namespace EhouarnPerret.CSharp.HackerRank.Sandbox.Algorithms.Warmup
             var b = Convert.ToInt32(Console.ReadLine());
 
             // Amazingly stupid
-            var sum = SolveMeFirstSolution.SolveMeFirst(a, b);
+            var sum = Solution.SolveMeFirst(a, b);
 
             Console.WriteLine(sum);
         }
