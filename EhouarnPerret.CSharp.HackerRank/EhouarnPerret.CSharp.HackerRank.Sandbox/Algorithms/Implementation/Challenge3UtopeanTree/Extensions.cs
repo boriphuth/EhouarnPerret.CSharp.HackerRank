@@ -1,5 +1,5 @@
-﻿//
-// Solution.cs
+//
+// Extensions.cs
 //
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
@@ -23,21 +23,16 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
+
 using System;
 
-namespace EhouarnPerret.CSharp.HackerRank.Sandbox.Algorithms.Implementation.Challenge2SherlockandTheBeast
+namespace EhouarnPerret.CSharp.HackerRank.Sandbox.Algorithms.Implementation.Challenge3UtopeanTree
 {
-    public static class Solution
+    public static class Extensions
     {
-        public static void Main(params String[] arguments) 
+        public static Boolean IsOdd(this Int32 value)
         {
-            var testCasecount = Convert.ToInt32(Console.ReadLine());
-
-            for(var testCase = 0; testCase < testCasecount; testCase++)
-            {
-                var decentNumberDigitCount = Convert.ToInt32(Console.ReadLine());
-            }
+            return value % 2 == 1;
         }
     }
 }
-
