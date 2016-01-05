@@ -49,37 +49,41 @@ namespace EhouarnPerret.CSharp.HackerRank.Sandbox.Algorithms.Implementation.Chal
             return value % other == 0;
         }
 
-        public static BigInteger? FindLargestDecentNumber(this Int32 decentNumberDigitCount)
-        {
-            // Decent Number is defined as follows: 
-            // * 3 and 5 digits only
-            // * 3's count divisible by 5 
-            // * 5's count divisible by 3 
-
-            // In our situation: 3 . x + 5 . y = N 
-            // <=> Diophantine Equation
-            // <=> a.x + b.y = c
-            // There is a solution if and only if c is multiple of GCD(a, b)
-            // a = 3, b = 5
-            // GCD(a, b) resolution:
-            // 5 = 3 . 1 + 2;
-            // 3 = 2 . 1 + 1
-            // => GCD(a, b) = 1 = 3 - 2 . 1
-            // Also 2 = 5 - 3 . 1
-            // So put altogether we have
-            // => 1 = 3 - (5 - 3 . 1) . 1
-            // => 1 = 3 - 5 . 1 + 3 . 1
-            // => 1 = 3 . 2 + 5 . (-1)
-            // <=> N . 1 = N . (3 . 2 + 5 . (-1))
-            // <=> N = 3 . 2 . N + 5 . (-1) . N)
-            // <=> N = 3 . x + 5 . y
-            // => (x, y) = (2 . N, -1 . N) a simple solution
-            // Other solutions are of the form (x + k . v, y - k . u)
-            // Where v = a / GCD(a, b) and u = b / GCD(a, b)
-            // Consequently other solutions are (x + k . 3 . 1, y + k . 5 . 1)
-            // That is (x + 3 . k, y + 5 . k)
-            // Therefore: 2 . N = x + 3 . k and -1 . N = y + 5 . k
-        }
+//        public static BigInteger? FindLargestDecentNumber(this Int32 decentNumberDigitCount)
+//        {
+//            // Decent Number is defined as follows: 
+//            // * 3 and 5 digits only
+//            // * 3's count divisible by 5 
+//            // * 5's count divisible by 3 
+//
+//            // In our situation: 3 . x + 5 . y = N 
+//            // <=> Diophantine Equation
+//            // <=> a.x + b.y = c
+//            // There is a solution if and only if c is multiple of GCD(a, b)
+//            // a = 3, b = 5
+//            // GCD(a, b) resolution:
+//            // 5 = 3 . 1 + 2;
+//            // 3 = 2 . 1 + 1
+//            // => GCD(a, b) = 1 = 3 - 2 . 1
+//            // Also 2 = 5 - 3 . 1
+//            // So put altogether we have:
+//            // <=> 1 = 3 - (5 - 3 . 1) . 1
+//            // <=> 1 = 3 - 5 . 1 + 3 . 1
+//            // <=> 1 = 3 . 2 + 5 . (-1)
+//            // <=> N . 1 = N . (3 . 2 + 5 . (-1))
+//            // <=> N = 3 . 2 . N + 5 . (-1) . N)
+//            // <=> N = 3 . x + 5 . y
+//            // => (x, y) = (2 . N, -1 . N) a simple solution
+//            // Other solutions are of the form (x + k . v, y - k . u)
+//            // Where u = a / GCD(a, b) and v = b / GCD(a, b)
+//            // Consequently other solutions are (x + k . 5 / 1, y + k . 3 / 1)
+//            // That is (x + 5 . k, y + 3 . k)
+//            // Therefore: 2 . N = x + 5 . k and -1 . N = y + 3 . k
+//			// 
+//			
+//        }
+//    
+//    
     }
 }
 
