@@ -29,7 +29,6 @@ namespace EhouarnPerret.CSharp.HackerRank.Sandbox.Algorithms.Implementation.Chal
 {
     public static class Solution
     {
-
         // Oki the trick here is to notice... an arithmetico-geometric sequence
         // How's that? Quite simple actually
         // Un = a^n (U0 - r) + r
@@ -45,9 +44,31 @@ namespace EhouarnPerret.CSharp.HackerRank.Sandbox.Algorithms.Implementation.Chal
         // So applicable starting with a cycle count equal to 2
         // Odd numbers of cycle count are reflecting summers
         // Even numbers of cycle count are reflecting spring
+
+        // Note seems there is a binary pattern:
+        // cycle count = 0 => 1      1
+        // cycle count = 1 => 2     10
+        // cycle count = 2 => 3     11
+        // cycle count = 3 => 6    110
+        // cycle count = 4 => 7    111
+        // cycle count = 5 => 14  1110
+        // cycle count = 6 => 15  1111
+
+        // For a year cycle (spring + summer):
+        // cycle count = 0 => 1      1
+        // cycle count = 2 => 3     11
+        // cycle count = 4 => 7    111
+        // cycle count = 6 => 15  1111 
+        // cycleCount >> 1: divides by 2 to get the year
+        // << cycleCount % 2: double if the cycle is odd
+        // To sum-up: 
+        // ((1 << ( (n >> 1) + 1) ) -1 ) << n%2
+        // or using the Not logical operator:
+        // ~(~1 << (n >> 1)) << n%2
+
         public static void Main(params String[] arguments)
         {
-            var testCaseCount = Convert.ToInt32(Console.ReadLine());
+            var testCaseCount = Convert.ToUInt32(Console.ReadLine());
 
             const Int32 a = 2;              // Spring double effect
             const Int32 b = 1;              // Summer increase
@@ -73,6 +94,13 @@ namespace EhouarnPerret.CSharp.HackerRank.Sandbox.Algorithms.Implementation.Chal
                     {
                         un--;
                     }
+                }
+
+                var binaryPatternTrick = ~(~1 << (cycleCount >> 1)) << cycleCount % 2;
+
+                if (binaryPatternTrick != un)
+                {
+                    throw new InvalidOperationException();
                 }
 
                 Console.WriteLine(un);
