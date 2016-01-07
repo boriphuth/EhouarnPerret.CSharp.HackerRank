@@ -25,6 +25,7 @@
 // THE SOFTWARE.
 using System;
 using System.Linq;
+using System.Text;
 
 namespace EhouarnPerret.CSharp.HackerRank.Sandbox.Algorithms.Implementation.Challenge4FindDigits
 {

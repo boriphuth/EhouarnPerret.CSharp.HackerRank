@@ -1,3 +1,5 @@
+﻿//
+// Extensions.cs
 //
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
@@ -21,22 +23,12 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
-
 using System;
 
-namespace EhouarnPerret.CSharp.HackerRank.Sandbox.DaysOfCode.Day3IfElseStatements
+namespace EhouarnPerret.CSharp.HackerRank.Sandbox.Algorithms.Implementation.Challenge5SherlockAndSquares
 {
     public static class Extensions
     {
-        public static Boolean IsEven(this Int32 value)
-        {
-            return value % 2 == 0;
-        }
-        public static Boolean IsOdd(this Int32 value)
-        {
-            return value % 2 != 0;
-        }
-
         public static Boolean IsBetween<T> (this T value, T lowerBound, T upperBound)
             where T : IComparable<T>
         {
@@ -49,37 +41,6 @@ namespace EhouarnPerret.CSharp.HackerRank.Sandbox.DaysOfCode.Day3IfElseStatement
                 return (lowerBound.CompareTo(value) <= 0) && (upperBound.CompareTo(value) >= 0);
             }
         }
-
-        public static Boolean IsNotBetween<T> (this T value, T lowerBound, T upperBound)
-            where T : IComparable<T>
-        {
-            if (lowerBound.CompareTo(upperBound) > 0)
-            {
-                throw new ArgumentOutOfRangeException(nameof(lowerBound));
-            }
-            else
-            {
-                return (lowerBound.CompareTo(value) >= 0) && (upperBound.CompareTo(value) <= 0);
-            }
-        }
-
-        public static Boolean IsStrictlyNotBetween<T> (this T value, T lowerBound, T upperBound)
-            where T : IComparable<T>
-        {
-            if (lowerBound.CompareTo(upperBound) >= 0)
-            {
-                throw new ArgumentOutOfRangeException(nameof(lowerBound));
-            }
-            else
-            {
-                return (lowerBound.CompareTo(value) > 0) && (upperBound.CompareTo(value) < 0);
-            }
-        }
-
-        public static Boolean IsStrictlyGreaterThan<T>(this T value, T otherValue)
-            where T : IComparable<T>
-        {
-            return value.CompareTo(otherValue) > 0;
-        }
     }
 }
+
