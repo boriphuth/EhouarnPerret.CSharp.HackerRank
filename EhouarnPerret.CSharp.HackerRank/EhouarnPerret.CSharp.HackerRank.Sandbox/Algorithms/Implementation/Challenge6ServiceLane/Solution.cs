@@ -24,18 +24,28 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
+using System.Linq;
 
-namespace EhouarnPerret.CSharp.HackerRank.Sandbox.Algorithms.Implementation.Challenge2SherlockandTheBeast
+namespace EhouarnPerret.CSharp.HackerRank.Sandbox.Algorithms.Implementation.Challenge6ServiceLane
 {
     public static class Solution
     {
-        public static void Main(params String[] arguments) 
+        public static void Main(params String[] args)
         {
-            var testCasecount = Convert.ToInt32(Console.ReadLine());
+            var stringTokens = Console.ReadLine().Split(new [] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+            var freewayLength = Convert.ToInt32(stringTokens[0]);
+            var testCaseCount = Convert.ToInt32(stringTokens[1]);
 
-            for(var testCase = 0; testCase < testCasecount; testCase++)
+            var laneWidthString = Console.ReadLine().Split(new [] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+            var laneWidth = Array.ConvertAll(laneWidthString, Int32.Parse);
+
+            for (var testCase = 0; testCase < testCaseCount; testCase++)
             {
-                // var decentNumberDigitCount = Convert.ToInt32(Console.ReadLine());
+                stringTokens = Console.ReadLine().Split(new [] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+                var i = Convert.ToInt32(stringTokens[0]);
+                var j = Convert.ToInt32(stringTokens[1]);
+
+                Console.WriteLine(laneWidth.Take(freewayLength).Skip(i).Take(j + 1 - i).Min());
             }
         }
     }
