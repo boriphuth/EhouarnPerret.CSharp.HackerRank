@@ -1,5 +1,5 @@
-﻿//
-// Solution.cs
+//
+// Extensions.cs
 //
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
@@ -23,28 +23,37 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
+
 using System;
-using System.Linq;
-using System.Globalization;
-using System.Text;
+using System.Net.NetworkInformation;
 
-namespace EhouarnPerret.CSharp.HackerRank.Sandbox.Algorithms.Strings.Challenge1Pangrams
+namespace EhouarnPerret.CSharp.HackerRank.Sandbox.Algorithms.Strings.Challenge2FunnyString
 {
-    public static class Solution 
+    public static class Extensions
     {
-        public static void Main(params String[] arguments)
+        public static Boolean IsFunny(this String value)
         {
-            var value = Console.ReadLine();
+            var reversedValue = value.Reverse();
 
-            if (value.IsPangram())
+            for (var i = 1; i < value.Length; i++)
             {
-                Console.WriteLine(@"pangram");
+                var difference = Math.Abs(value[i] - value[i - 1]);
+                var reversedDifference = Math.Abs(reversedValue[i] - reversedValue[i - 1]);
+
+                if (difference != reversedDifference)
+                {
+                    return false;
+                }
             }
-            else
-            {
-                Console.WriteLine(@"not pangram");
-            }
+
+            return true;
+        }
+
+        public static String Reverse(this String value)
+        {
+            var characters = value.ToCharArray();
+            Array.Reverse(characters);
+            return new String(characters);
         }
     }
 }
-

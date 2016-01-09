@@ -24,25 +24,27 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-using System.Linq;
-using System.Globalization;
-using System.Text;
 
-namespace EhouarnPerret.CSharp.HackerRank.Sandbox.Algorithms.Strings.Challenge1Pangrams
+namespace EhouarnPerret.CSharp.HackerRank.Sandbox.Algorithms.Strings.Challenge2FunnyString
 {
     public static class Solution 
     {
         public static void Main(params String[] arguments)
         {
-            var value = Console.ReadLine();
+            var testCaseCount = Convert.ToInt32(Console.ReadLine());
 
-            if (value.IsPangram())
+            for (var testCase = 0; testCase < testCaseCount; testCase++)
             {
-                Console.WriteLine(@"pangram");
-            }
-            else
-            {
-                Console.WriteLine(@"not pangram");
+                var value = Console.ReadLine();
+
+                if (value.IsFunny())
+                {
+                    Console.WriteLine(@"Funny");
+                }
+                else
+                {
+                    Console.WriteLine(@"Not Funny");
+                }
             }
         }
     }

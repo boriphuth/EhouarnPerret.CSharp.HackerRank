@@ -1,4 +1,4 @@
-﻿//
+//
 // Solution.cs
 //
 // Author:
@@ -30,21 +30,16 @@ using System.Text;
 
 namespace EhouarnPerret.CSharp.HackerRank.Sandbox.Algorithms.Strings.Challenge1Pangrams
 {
-    public static class Solution 
+    public static class Extensions
     {
-        public static void Main(params String[] arguments)
-        {
-            var value = Console.ReadLine();
+        private const Int32 LatinAlphabetCharacterCount = 26;
 
-            if (value.IsPangram())
-            {
-                Console.WriteLine(@"pangram");
-            }
-            else
-            {
-                Console.WriteLine(@"not pangram");
-            }
+        public static Boolean IsPangram(this String value)
+        {
+            return value.ToLower()
+                .Where(Char.IsLetter)
+                .GroupBy(character => character)
+                .Count() == Extensions.LatinAlphabetCharacterCount;
         }
     }
 }
-
