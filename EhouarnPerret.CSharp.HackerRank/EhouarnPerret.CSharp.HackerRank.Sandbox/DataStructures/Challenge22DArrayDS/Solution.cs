@@ -27,9 +27,9 @@ using System;
 
 namespace EhouarnPerret.CSharp.HackerRank.Sandbox.DataStructures.Challenge22DArrayDS
 {
-    public class Solution
+    public static class Solution 
     {
-        public Solution()
+        public static void Main(params String[] args) 
         {
         }
     }
