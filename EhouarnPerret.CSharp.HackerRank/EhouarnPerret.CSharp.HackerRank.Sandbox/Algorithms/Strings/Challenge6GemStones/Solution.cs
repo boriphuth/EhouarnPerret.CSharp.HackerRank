@@ -24,43 +24,31 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-using System.Text;
+using System.Linq;
+using System.Collections.Generic;
 
-namespace EhouarnPerret.CSharp.HackerRank.Sandbox.Algorithms.Strings.Challenge3AlternatingCharacters
+namespace EhouarnPerret.CSharp.HackerRank.Sandbox.Algorithms.Strings.Challenge6GemStones
 {
     public static class Solution
     {
-
-        // The main trick here is not actually not delete but just to count 
-        // How many would have been deleted...
+        // There might be a much more efficient way to do that...
+        // Should check hamming distance
         public static void Main(params String[] arguments)
         {
-            var testCaseCount = Convert.ToInt32(Console.ReadLine());
+            // Number of rocks / strings
+            var n = Convert.ToInt32(Console.ReadLine());
 
-            for (var testCase = 0; testCase < testCaseCount; testCase++)
+            var inputs = new IEnumerable<Char>[n];
+
+            for (var i = 0; i < n; i++)
             {
-                var value = Console.ReadLine();
-
-                var deletionCount = 0;
-
-                var previous = value[0];
-
-                for (var i = 1; i < value.Length; i++)
-                {
-                    var current = value[i];
-
-                    if (current == previous)
-                    {
-                        deletionCount++;
-                    }
-                    else
-                    {
-                        previous = current;
-                    }
-                }
-
-                Console.WriteLine(deletionCount);
+                inputs[i] = Console.ReadLine();
             }
+
+            // Common elements (characters) to all the rocks 
+            var commonCharacterCount = inputs.Aggregate(Enumerable.Intersect).Count();
+
+            Console.WriteLine(commonCharacterCount);
         }
     }
 }

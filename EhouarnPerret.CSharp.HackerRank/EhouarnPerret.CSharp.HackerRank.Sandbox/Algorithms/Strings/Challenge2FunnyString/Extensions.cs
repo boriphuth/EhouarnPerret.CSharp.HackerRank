@@ -31,6 +31,12 @@ namespace EhouarnPerret.CSharp.HackerRank.Sandbox.Algorithms.Strings.Challenge2F
 {
     public static class Extensions
     {
+        /// <summary>
+        /// Determines if is funny the specified value.
+        /// Using the given algorithm on HackerRank.
+        /// </summary>
+        /// <returns><c>true</c> if the specified value is funny; otherwise, <c>false</c>.</returns>
+        /// <param name="value">Value.</param>
         public static Boolean IsFunny(this String value)
         {
             var reversedValue = value.Reverse();
@@ -49,6 +55,10 @@ namespace EhouarnPerret.CSharp.HackerRank.Sandbox.Algorithms.Strings.Challenge2F
             return true;
         }
 
+        /// <summary>
+        /// Reverse the specified value.
+        /// </summary>
+        /// <param name="value">Value.</param>
         public static String Reverse(this String value)
         {
             var characters = value.ToCharArray();

@@ -34,6 +34,11 @@ namespace EhouarnPerret.CSharp.HackerRank.Sandbox.Algorithms.Strings.Challenge1P
     {
         private const Int32 LatinAlphabetCharacterCount = 26;
 
+        /// <summary>
+        /// Determines if the specified value is a pangram.
+        /// </summary>
+        /// <returns><c>true</c> if the value is a pangram; otherwise, <c>false</c>.</returns>
+        /// <param name="value">Value.</param>
         public static Boolean IsPangram(this String value)
         {
             return value.ToLower()

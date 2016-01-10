@@ -24,42 +24,23 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-using System.Text;
+using System.Linq;
 
-namespace EhouarnPerret.CSharp.HackerRank.Sandbox.Algorithms.Strings.Challenge3AlternatingCharacters
+namespace EhouarnPerret.CSharp.HackerRank.Sandbox.Algorithms.Strings.Challenge4GameOfThrones1
 {
     public static class Solution
     {
-
-        // The main trick here is not actually not delete but just to count 
-        // How many would have been deleted...
         public static void Main(params String[] arguments)
         {
-            var testCaseCount = Convert.ToInt32(Console.ReadLine());
+            var value = Console.ReadLine();
 
-            for (var testCase = 0; testCase < testCaseCount; testCase++)
+            if (value.IsPalindromAnagram())
             {
-                var value = Console.ReadLine();
-
-                var deletionCount = 0;
-
-                var previous = value[0];
-
-                for (var i = 1; i < value.Length; i++)
-                {
-                    var current = value[i];
-
-                    if (current == previous)
-                    {
-                        deletionCount++;
-                    }
-                    else
-                    {
-                        previous = current;
-                    }
-                }
-
-                Console.WriteLine(deletionCount);
+                Console.WriteLine(@"YES");
+            }
+            else
+            {
+                Console.WriteLine(@"NO");
             }
         }
     }

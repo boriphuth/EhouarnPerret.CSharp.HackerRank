@@ -1,5 +1,5 @@
-﻿//
-// Solution.cs
+//
+// Extensions.cs
 //
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
@@ -23,45 +23,25 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
+
 using System;
-using System.Text;
+using System.Linq;
 
-namespace EhouarnPerret.CSharp.HackerRank.Sandbox.Algorithms.Strings.Challenge3AlternatingCharacters
+namespace EhouarnPerret.CSharp.HackerRank.Sandbox.Algorithms.Strings.Challenge4GameOfThrones1
 {
-    public static class Solution
+    public static class Extensions
     {
-
-        // The main trick here is not actually not delete but just to count 
-        // How many would have been deleted...
-        public static void Main(params String[] arguments)
+        public static Boolean IsPalindromAnagram(this String value)
         {
-            var testCaseCount = Convert.ToInt32(Console.ReadLine());
-
-            for (var testCase = 0; testCase < testCaseCount; testCase++)
-            {
-                var value = Console.ReadLine();
-
-                var deletionCount = 0;
-
-                var previous = value[0];
-
-                for (var i = 1; i < value.Length; i++)
+            var charactersCount = value.GroupBy(character => character, (character, characters)
+                => new 
                 {
-                    var current = value[i];
-
-                    if (current == previous)
-                    {
-                        deletionCount++;
-                    }
-                    else
-                    {
-                        previous = current;
-                    }
+                    Character = character,
+                    Count = characters.Count(),
                 }
+            );
 
-                Console.WriteLine(deletionCount);
-            }
+            return charactersCount.Count(character => (character.Count % 2) == 1) <= 1;
         }
     }
 }
-
