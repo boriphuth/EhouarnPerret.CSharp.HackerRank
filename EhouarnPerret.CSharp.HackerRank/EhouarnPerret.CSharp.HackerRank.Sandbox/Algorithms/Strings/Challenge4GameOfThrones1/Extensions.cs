@@ -31,9 +31,15 @@ namespace EhouarnPerret.CSharp.HackerRank.Sandbox.Algorithms.Strings.Challenge4G
 {
     public static class Extensions
     {
+        // Sort of easy:
+        // - Anagram condition means that we don't care about the characters order
+        // - So basically in order to check whether the input can be a palindrom 
+        // We just need to verify the condition against the evenity and oddity of characters
+        // e.g. "abcdabcde" => "abcdedcba", only one or zero character in the middle can be used 
+        // as a pivot in the center, thus the other characters need to have an even count of occurences in the string
         public static Boolean IsPalindromAnagram(this String value)
         {
-            var charactersCount = value.GroupBy(character => character, (character, characters)
+            var characterCounts = value.GroupBy(character => character, (character, characters)
                 => new 
                 {
                     Character = character,
@@ -41,7 +47,7 @@ namespace EhouarnPerret.CSharp.HackerRank.Sandbox.Algorithms.Strings.Challenge4G
                 }
             );
 
-            return charactersCount.Count(character => (character.Count % 2) == 1) <= 1;
+            return characterCounts.Count(character => (character.Count % 2) == 1) <= 1;
         }
     }
 }
