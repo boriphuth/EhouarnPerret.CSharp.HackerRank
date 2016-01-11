@@ -29,7 +29,6 @@ using System.Security.Cryptography.X509Certificates;
 
 namespace EhouarnPerret.CSharp.HackerRank.Sandbox.DaysOfCode.Day10BinaryNumbers
 {
-
     public static class Extensions
     {
         public static String ToBinaryString(this UInt32 n, Boolean isUsingZeroPadding = false)
