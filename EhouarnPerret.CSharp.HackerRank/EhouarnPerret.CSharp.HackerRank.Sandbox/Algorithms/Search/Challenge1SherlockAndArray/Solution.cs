@@ -25,7 +25,7 @@
 // THE SOFTWARE.
 using System;
 using System.Linq;
-using System.Runtime.InteropServices;
+
 
 namespace EhouarnPerret.CSharp.HackerRank.Sandbox.Algorithms.Search.Challenge1SherlockAndArray
 {
@@ -43,21 +43,21 @@ namespace EhouarnPerret.CSharp.HackerRank.Sandbox.Algorithms.Search.Challenge1Sh
 
                 var a = Array.ConvertAll(aStringTokens, Convert.ToInt32);
 
-
-                // O(n)
-                var aSum = a.Sum();
-
-                var leftSum = 0;
-                var rightSum = aSum;
-
-                // O(n)
-//                for (var i = 0; i < n; i++)
-//                {
-//                    leftSum += aSum[i];
-//                    rightSum -=
-//                }
-
-                // ... O(n) = O(2n)
+                if (n != a.Length)
+                {
+                    throw new ArgumentException(nameof(a));
+                }
+                else
+                {
+                    if (a.FindEquilibriumIndex() >= 0)
+                    {
+                        Console.WriteLine(@"YES");
+                    }
+                    else
+                    {
+                        Console.WriteLine(@"NO");
+                    }
+                }
             }
         }
     }

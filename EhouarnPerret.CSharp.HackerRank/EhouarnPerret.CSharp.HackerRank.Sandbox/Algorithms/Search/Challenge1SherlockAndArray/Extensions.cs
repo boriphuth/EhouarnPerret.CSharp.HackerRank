@@ -1,5 +1,5 @@
-﻿//
-// Solution.cs
+//
+// Extensions.cs
 //
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
@@ -23,32 +23,49 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
+
 using System;
-using System.Collections.Generic;
+using System.Linq;
 
-namespace EhouarnPerret.CSharp.HackerRank.Sandbox.Algorithms.Strings.Challenge8TwoStrings
+namespace EhouarnPerret.CSharp.HackerRank.Sandbox.Algorithms.Search.Challenge1SherlockAndArray
 {
-    public static class Solution
+
+    public static class Extensions
     {
-        public static void Main(params String[] arguments) 
+        public static Int32 FindEquilibriumIndex(this Int32[] value)
         {
-            var testCaseCount = Convert.ToInt32(Console.ReadLine());
-
-            for (var testCase = 0; testCase < testCaseCount; testCase++)
+            if (value.Length == 1)
             {
-                var a = Console.ReadLine();
-                var b = Console.ReadLine();
+                return 0;
+            }
+            else if (value.Length == 2)
+            {
+                return -1;
+            }
+            else
+            {
+                // O(n)
+                var sum = value.Sum();
 
-                if (a.HasCommonSubstring(b))
+                var leftSum = value[0];
+
+                // O(n)
+                for (var i = 1; i < value.Length; i++)
                 {
-                    Console.WriteLine(@"YES");
+                    var rightSum = sum - leftSum - value[i];
+
+                    if (leftSum == rightSum)
+                    {
+                        return i;
+                    }
+
+                    leftSum += value[i];
                 }
-                else
-                {
-                    Console.WriteLine(@"NO");
-                }
+
+                // ... O(n) = O(2n)
+
+                return -1;
             }
         }
     }
 }
-
