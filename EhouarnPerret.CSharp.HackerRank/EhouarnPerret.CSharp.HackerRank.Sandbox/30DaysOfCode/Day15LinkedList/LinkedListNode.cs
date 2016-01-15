@@ -1,5 +1,5 @@
-﻿//
-// Solution.cs
+//
+// LinkedListNode.cs
 //
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
@@ -23,26 +23,23 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
+
 using System;
-using System.Linq;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
-namespace EhouarnPerret.CSharp.HackerRank.Sandbox.DaysOfCode.Day14ScopeAndImports
+namespace EhouarnPerret.CSharp.HackerRank.Sandbox.DaysOfCode.Day15LinkedList
 {
-    public static class Solution
+    public class LinkedListNode<T>
     {
-        public static void Main(params String[] arguments) 
+        public T Value { get; }
+
+        public LinkedListNode<T> Next { get; internal set; }
+
+        public LinkedListNode(T value)
         {
-            var n = Convert.ToInt32(Console.ReadLine());
-
-            var a = Console.ReadLine()
-                .Split(new [] { ' ' }, StringSplitOptions.RemoveEmptyEntries)
-                .Take(n)
-                .Select(x => Convert.ToInt32(x)).ToArray();
-
-            var difference = new Difference(a);
-
-            Console.WriteLine(difference.MaximumDifference);
+            this.Value = value;
         }
     }
+    
 }
-

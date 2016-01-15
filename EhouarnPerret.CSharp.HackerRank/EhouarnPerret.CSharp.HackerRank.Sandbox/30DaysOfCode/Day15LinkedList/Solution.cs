@@ -1,5 +1,5 @@
-//
-// Difference.cs
+﻿//
+// Solution.cs
 //
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
@@ -23,61 +23,61 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
-
 using System;
-using System.Linq;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
 
-namespace EhouarnPerret.CSharp.HackerRank.Sandbox.DaysOfCode.Day14ScopeAndImports
+namespace EhouarnPerret.CSharp.HackerRank.Sandbox.DaysOfCode.Day15LinkedList
 {
-    public class Difference
+    public static class Solution
     {
-        public Difference(IEnumerable<Int32> elements)
+        public static void Main(params String[] arguments)
         {
-            this.Elements = new ReadOnlyCollection<Int32>(elements.ToList());
+            var head = default(LinkedListNode<Int32>);
 
-            this.MaximumDifference = this.ComputeMaximumDifference(this.Elements as IList<Int32>);
+            var testCaseCount = Int32.Parse(Console.ReadLine());
+
+            while (testCaseCount-- > 0)
+            {
+                var data = Int32.Parse(Console.ReadLine());
+                head = Solution.Insert(head,data);
+            }
+
+            Solution.Display(head);
         }
 
-        private Int32 ComputeMaximumDifference (IList<Int32> elements)
+        public static LinkedListNode<TValue> Insert<TValue>(LinkedListNode<TValue> head, TValue value)
         {
-            var minimum = elements[0];
-
-            if (elements.Count == 1)
+            if (head == null)
             {
-                return minimum;
+                head = new LinkedListNode<TValue>(value);
+
+                return head;
             }
             else
             {
-                var maximum = elements[1];
+                var currentNode = head;
 
-                var maximumDifference = maximum - minimum;
-
-                for (var i = 2; i < elements.Count; i++)
+                while (currentNode.Next != null)
                 {
-                    var element = elements[i];
-
-                    if (minimum > element)
-                    {
-                        minimum = element;
-                    }
-                    if (maximum < element)
-                    {
-                        maximum = element;
-                    }
-
-                    maximumDifference = maximum - minimum;
+                    currentNode = currentNode.Next;
                 }
 
-                return maximumDifference;
+                currentNode.Next = new LinkedListNode<TValue>(value);
+
+                return head;
             }
-           
         }
 
-        public IReadOnlyList<Int32> Elements { get; }
+        public static void Display<TValue>(LinkedListNode<TValue> head)
+        {
+            var currentNode = head;
 
-        public Int32 MaximumDifference { get; }
+            while(currentNode != null)
+            {
+                Console.Write(currentNode.Value + @" ");
+
+                currentNode = currentNode.Next;
+            }
+        }
     }
-
 }
+
