@@ -40,23 +40,30 @@ namespace EhouarnPerret.CSharp.HackerRank.Sandbox.Algorithms.Sorting.Challenge2I
             // Console.ReadLine()
             var arrayStringTokens = @"2 3 4 5 6 7 8 9 10 1".Split(new [] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
 
-            var list = Array.ConvertAll(arrayStringTokens, Convert.ToInt32).ToList();
+            var list = arrayStringTokens.Select(item => Convert.ToInt32(item)).ToList();
 
-            // The last one is the item to insert in the sorted list.
-            var e = list[n - 1];
+            if (list.Count != n)
+            {
+                throw new ArgumentException(nameof(n));
+            }
+            else
+            {
+                // The last one is the item to insert in the sorted list.
+                var e = list[n - 1];
 
-            list.RemoveAt(list.Count - 1);
+                list.RemoveAt(list.Count - 1);
 
-            // Recreate virtually the situation, sorted array / list
-            list.Sort();
+                // Recreate virtually the situation, sorted array / list
+                list.Sort();
 
-            // Add the extracted item to insert
-            list.Add(e);
+                // Add the extracted item to insert
+                list.Add(e);
 
-            // Convert to an array as expected
-            array = list.ToArray();
+                // Convert to an array as expected
+                array = list.ToArray();
 
-            array.SortedInsertionSorted();
+                array.SortedInsertionSort(array.Length - 1);
+            }
         }
     }
 }

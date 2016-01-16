@@ -23,12 +23,11 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
-using System;
-using System.Linq;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 
-namespace EhouarnPerret.CSharp.HackerRank.Sandbox.Algorithms.Sorting.Challenge2InsertionSortPart1
+using System;
+using System.Collections.Generic;
+
+namespace EhouarnPerret.CSharp.HackerRank.Sandbox.Algorithms.Sorting.Challenge3InsertionSortPart2
 {
     public static class Extensions
     {
@@ -46,19 +45,28 @@ namespace EhouarnPerret.CSharp.HackerRank.Sandbox.Algorithms.Sorting.Challenge2I
             {
                 source.ShiftToRight(j);
 
-                source.WriteToConsole();
-
                 j--;
             }
 
             source[j + 1] = e;
 
+            // This time only when we insert the item in the right slot
             source.WriteToConsole();
         }
 
         private static void ShiftToRight<T>(this IList<T> source, Int32 index)
         {
             source[index + 1] = source[index];
+        }
+
+        public static void InsertionSort<TComparable>(this IList<TComparable> source)
+            where TComparable : IComparable<TComparable>
+        {
+            // Starts from i = 1 => micro-optimization => "already sorted"
+            for (var i = 1; i < source.Count; i++)
+            {
+                source.SortedInsertionSort(i);
+            }
         }
 
         private static void WriteToConsole<T>(this IEnumerable<T> source, String separator = @" ")

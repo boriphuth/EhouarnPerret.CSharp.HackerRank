@@ -25,6 +25,7 @@
 // THE SOFTWARE.
 using System;
 using System.Linq;
+using System.Collections.Generic;
 
 namespace EhouarnPerret.CSharp.HackerRank.Sandbox.Algorithms.Sorting.Challenge3InsertionSortPart2
 {
@@ -34,14 +35,18 @@ namespace EhouarnPerret.CSharp.HackerRank.Sandbox.Algorithms.Sorting.Challenge3I
         {
             var n = Convert.ToInt32(Console.ReadLine());
 
-            var array = new Int32 [n];
-
-            // Console.ReadLine()
             var arrayStringTokens = Console.ReadLine().Split(new [] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
 
-            var list = Array.ConvertAll(arrayStringTokens, Convert.ToInt32).ToList();
+            var array = Array.ConvertAll(arrayStringTokens, Convert.ToInt32);
 
-
+            if (array.Length != n)
+            {
+                throw new ArgumentException(nameof(n));
+            }
+            else
+            {
+                array.InsertionSort();
+            }
         }
     }
 }
