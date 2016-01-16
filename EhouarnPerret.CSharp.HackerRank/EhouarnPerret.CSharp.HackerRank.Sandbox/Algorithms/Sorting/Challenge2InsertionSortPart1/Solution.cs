@@ -33,12 +33,12 @@ namespace EhouarnPerret.CSharp.HackerRank.Sandbox.Algorithms.Sorting.Challenge2I
     {
         public static void Main(params String[] arguments) 
         {
-            var n = Convert.ToInt32(Console.ReadLine());
+            var n = 10; //Convert.ToInt32(Console.ReadLine());
 
             var array = new Int32 [n];
 
             // Console.ReadLine()
-            var arrayStringTokens = Console.ReadLine().Split(new [] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+            var arrayStringTokens = @"2 3 4 5 6 7 8 9 10 1".Split(new [] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
 
             var list = Array.ConvertAll(arrayStringTokens, Convert.ToInt32).ToList();
 
@@ -56,7 +56,7 @@ namespace EhouarnPerret.CSharp.HackerRank.Sandbox.Algorithms.Sorting.Challenge2I
             // Convert to an array as expected
             array = list.ToArray();
 
-            array.InsertionSort();
+            array.SortedInsertionSorted();
         }
     }
 }

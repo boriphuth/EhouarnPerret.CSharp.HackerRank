@@ -26,49 +26,39 @@
 using System;
 using System.Linq;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace EhouarnPerret.CSharp.HackerRank.Sandbox.Algorithms.Sorting.Challenge2InsertionSortPart1
 {
     public static class Extensions
     {
         // Supposedly on an already sorted array
-        public static void InsertionSort<TComparable>(this IList<TComparable> source) 
-            where TComparable : IComparable<TComparable>
+        public static void SortedInsertionSorted<T>(this IList<T> source) 
         {
             // Except the rightmost cell which is the black sheep
             var e = source.Last();
 
-            var isInsertionDone = false;
+            var j = (source.Count - 1) - 1;
 
-            for (var i = source.Count - 2; i >= 0; i--)
+            var comparer = Comparer<T>.Default;
+
+            while ((j >= 0) && (comparer.Compare(source[j], e) > 0))
             {
-                var item = source[i];
-
-                if (item.CompareTo(e) > 0)
-                {
-                    source[i + 1] = item;
-                }
-                else if ((item.CompareTo(e) <= 0))
-                {
-                    source[i + 1] = e;
-
-                    isInsertionDone = true;
-                }
+                source.ShiftToRight(j);
 
                 source.WriteToConsole();
 
-                if (isInsertionDone)
-                {
-                    break;
-                }
+                j--;
             }
 
-            if (!isInsertionDone)
-            {
-                source[0] = e;
+            source[j + 1] = e;
 
-                source.WriteToConsole();
-            }
+            source.WriteToConsole();
+        }
+
+        private static void ShiftToRight<T>(this IList<T> source, Int32 index)
+        {
+            source[index + 1] = source[index];
         }
 
         private static void WriteToConsole<T>(this IEnumerable<T> source, String separator = @" ")
