@@ -25,9 +25,8 @@
 // THE SOFTWARE.
 using System;
 using System.Linq;
-using System.Collections.Generic;
 
-namespace EhouarnPerret.CSharp.HackerRank.Sandbox.Algorithms.Sorting.Challenge2InsertionSortPart1
+namespace EhouarnPerret.CSharp.HackerRank.Sandbox.Algorithms.Sorting.Challenge3InsertionSortPart2
 {
     public static class Solution
     {
@@ -42,21 +41,7 @@ namespace EhouarnPerret.CSharp.HackerRank.Sandbox.Algorithms.Sorting.Challenge2I
 
             var list = Array.ConvertAll(arrayStringTokens, Convert.ToInt32).ToList();
 
-            // The last one is the item to insert in the sorted list.
-            var e = list[n - 1];
 
-            list.RemoveAt(list.Count - 1);
-
-            // Recreate virtually the situation, sorted array / list
-            list.Sort();
-
-            // Add the extracted item to insert
-            list.Add(e);
-
-            // Convert to an array as expected
-            array = list.ToArray();
-
-            array.InsertionSort();
         }
     }
 }

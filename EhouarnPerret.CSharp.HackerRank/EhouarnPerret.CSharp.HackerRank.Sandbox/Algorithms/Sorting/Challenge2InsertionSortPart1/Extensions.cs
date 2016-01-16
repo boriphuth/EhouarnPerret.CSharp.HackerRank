@@ -1,5 +1,5 @@
-﻿//
-// Solution.cs
+//
+// Extensions.cs
 //
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
@@ -29,35 +29,51 @@ using System.Collections.Generic;
 
 namespace EhouarnPerret.CSharp.HackerRank.Sandbox.Algorithms.Sorting.Challenge2InsertionSortPart1
 {
-    public static class Solution
+    public static class Extensions
     {
-        public static void Main(params String[] arguments) 
+        // Supposedly on an already sorted array
+        public static void InsertionSort<TComparable>(this IList<TComparable> source) 
+            where TComparable : IComparable<TComparable>
         {
-            var n = Convert.ToInt32(Console.ReadLine());
+            // Except the rightmost cell which is the black sheep
+            var e = source.Last();
 
-            var array = new Int32 [n];
+            var isInsertionDone = false;
 
-            // Console.ReadLine()
-            var arrayStringTokens = Console.ReadLine().Split(new [] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+            for (var i = source.Count - 2; i >= 0; i--)
+            {
+                var item = source[i];
 
-            var list = Array.ConvertAll(arrayStringTokens, Convert.ToInt32).ToList();
+                if (item.CompareTo(e) > 0)
+                {
+                    source[i + 1] = item;
+                }
+                else if ((item.CompareTo(e) <= 0))
+                {
+                    source[i + 1] = e;
 
-            // The last one is the item to insert in the sorted list.
-            var e = list[n - 1];
+                    isInsertionDone = true;
+                }
 
-            list.RemoveAt(list.Count - 1);
+                source.WriteToConsole();
 
-            // Recreate virtually the situation, sorted array / list
-            list.Sort();
+                if (isInsertionDone)
+                {
+                    break;
+                }
+            }
 
-            // Add the extracted item to insert
-            list.Add(e);
+            if (!isInsertionDone)
+            {
+                source[0] = e;
 
-            // Convert to an array as expected
-            array = list.ToArray();
+                source.WriteToConsole();
+            }
+        }
 
-            array.InsertionSort();
+        private static void WriteToConsole<T>(this IEnumerable<T> source, String separator = @" ")
+        {
+            Console.WriteLine(String.Join(separator, source));
         }
     }
 }
-
