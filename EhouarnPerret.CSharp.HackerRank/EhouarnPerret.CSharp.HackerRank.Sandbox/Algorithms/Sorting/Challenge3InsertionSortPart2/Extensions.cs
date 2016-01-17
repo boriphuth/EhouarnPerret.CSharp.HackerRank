@@ -58,8 +58,7 @@ namespace EhouarnPerret.CSharp.HackerRank.Sandbox.Algorithms.Sorting.Challenge3I
             source[index + 1] = source[index];
         }
 
-        public static void InsertionSort<TComparable>(this IList<TComparable> source)
-            where TComparable : IComparable<TComparable>
+        public static void InsertionSort<T>(this IList<T> source)
         {
             // Starts from i = 1 => micro-optimization => "already sorted"
             for (var i = 1; i < source.Count; i++)
@@ -68,7 +67,7 @@ namespace EhouarnPerret.CSharp.HackerRank.Sandbox.Algorithms.Sorting.Challenge3I
             }
         }
 
-        private static void WriteLineToConsole<T>(this IEnumerable<T> source, String separator = @" ")
+        public static void WriteLineToConsole<T>(this IEnumerable<T> source, String separator = @" ")
         {
             Console.WriteLine(String.Join(separator, source));
         }

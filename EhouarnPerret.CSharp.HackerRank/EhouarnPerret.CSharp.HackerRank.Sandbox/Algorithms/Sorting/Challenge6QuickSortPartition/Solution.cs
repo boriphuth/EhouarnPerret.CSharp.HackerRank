@@ -1,5 +1,5 @@
-//
-// Extensions.cs
+﻿//
+// Solution.cs
 //
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
@@ -23,53 +23,57 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
-
 using System;
 using System.Collections.Generic;
 
-namespace EhouarnPerret.CSharp.HackerRank.Sandbox.Algorithms.Sorting.Challenge4CorrectnessAndLoopInvariant
+namespace EhouarnPerret.CSharp.HackerRank.Sandbox.Algorithms.Sorting.Challenge6QuickSortPartition
 {
+    public static class Solution
+    {
+        public static void Main(params String[] arguments) 
+        {
+            var n = Convert.ToInt32(Console.ReadLine());
+
+            var arrayStringTokens = Console.ReadLine().Split(new [] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+
+            var array = Array.ConvertAll(arrayStringTokens, Convert.ToInt32);
+
+            if (array.Length != n)
+            {
+                throw new ArgumentException(nameof(n));
+            }
+            else
+            {
+
+            }
+        }
+    }
+
     public static class Extensions
     {
-        /// <summary>
-        /// Insertion sort for alread sorted data except the last one.
-        /// </summary>
-        /// <returns>The number of shifts required to sort.</returns>
-        /// <param name="source">Source.</param>
-        /// <param name="itemToSortIndex">Item to sort index.</param>
-        /// <typeparam name="T">The 1st type parameter.</typeparam>
-        private static void SortedInsertionSort<T>(this IList<T> source, Int32 itemToSortIndex) 
+//        public static void Partition<T>(this IList<T> source)
+//        {
+//            var pivotIndex = 0;
+//
+//            for (var i = 1; i < source.Count; i++)
+//            {
+//                if (source[i] < source[pivotIndex])
+//                {
+//                    source.Swap(i, pivotIndex);
+//                    pivotIndex = i;
+//                }
+//                else if (source[i] > source[pivotIndex])
+//                {
+//                    
+//                }
+//            }
+//        }
+
+        public static void Swap<T>(this IList<T> source, Int32 index1, Int32 index2)
         {
-            // Except the rightmost cell which is the black sheep
-            var e = source[itemToSortIndex];
-
-            var j = itemToSortIndex - 1;
-
-            var comparer = Comparer<T>.Default;
-
-            // The mistake is that basically it was j > 0 instead of j >= 0...
-            while ((j >= 0) && (comparer.Compare(source[j], e) > 0))
-            {
-                source.ShiftToRight(j);
-
-                j--;
-            }
-
-            source[j + 1] = e;
-        }
-
-        private static void ShiftToRight<T>(this IList<T> source, Int32 index)
-        {
-            source[index + 1] = source[index];
-        }
-
-        public static void InsertionSort<T>(this IList<T> source)
-        {
-            // Starts from i = 1 => micro-optimization => "already sorted"
-            for (var i = 1; i < source.Count; i++)
-            {
-                source.SortedInsertionSort(i);
-            }
+            var temp = source[index1];
+            source[index1] = source[index2];
+            source[index2] = temp;
         }
 
         public static void WriteLineToConsole<T>(this IEnumerable<T> source, String separator = @" ")
@@ -78,3 +82,4 @@ namespace EhouarnPerret.CSharp.HackerRank.Sandbox.Algorithms.Sorting.Challenge4C
         }
     }
 }
+

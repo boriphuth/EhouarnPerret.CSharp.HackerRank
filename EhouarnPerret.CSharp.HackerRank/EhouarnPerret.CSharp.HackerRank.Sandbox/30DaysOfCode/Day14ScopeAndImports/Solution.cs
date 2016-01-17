@@ -36,8 +36,9 @@ namespace EhouarnPerret.CSharp.HackerRank.Sandbox.DaysOfCode.Day14ScopeAndImport
 
             var a = Console.ReadLine()
                 .Split(new [] { ' ' }, StringSplitOptions.RemoveEmptyEntries)
+                .Select(x => Convert.ToInt32(x))
                 .Take(n)
-                .Select(x => Convert.ToInt32(x)).ToArray();
+                .ToArray();
 
             var difference = new Difference(a);
 

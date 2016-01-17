@@ -65,8 +65,7 @@ namespace EhouarnPerret.CSharp.HackerRank.Sandbox.Algorithms.Sorting.Challenge5R
             source[index + 1] = source[index];
         }
 
-        public static UInt32 InsertionSort<TComparable>(this IList<TComparable> source)
-            where TComparable : IComparable<TComparable>
+        public static UInt32 InsertionSort<T>(this IList<T> source)
         {
             var shiftCount = 0u;
 

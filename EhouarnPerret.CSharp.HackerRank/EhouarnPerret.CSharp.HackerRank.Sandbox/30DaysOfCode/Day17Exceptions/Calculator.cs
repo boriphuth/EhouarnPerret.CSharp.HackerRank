@@ -1,5 +1,5 @@
 //
-// Extensions.cs
+// Solution.cs
 //
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
@@ -24,46 +24,22 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-using System.Linq;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 
-namespace EhouarnPerret.CSharp.HackerRank.Sandbox.Algorithms.Sorting.Challenge2InsertionSortPart1
+namespace EhouarnPerret.CSharp.HackerRank.Sandbox.DaysOfCode.Day17Exceptions
 {
-    public static class Extensions
-    {
-        // Supposedly on an already sorted array
-        public static void SortedInsertionSort<T>(this IList<T> source, Int32 itemToSortIndex) 
+	public class Calculator
+	{
+        public Int32 Power(Int32 n, Int32 p)
         {
-            // Except the rightmost cell which is the black sheep
-            var e = source[itemToSortIndex];
-
-            var j = itemToSortIndex - 1;
-
-            var comparer = Comparer<T>.Default;
-
-            while ((j >= 0) && (comparer.Compare(source[j], e) > 0))
+            if ((n >= 0) && (p >= 0))
             {
-                source.ShiftToRight(j);
-
-                source.WriteLineToConsole();
-
-                j--;
+                return Convert.ToInt32(Math.Pow(n, p));
             }
-
-            source[j + 1] = e;
-
-            source.WriteLineToConsole();
+            else
+            {
+                throw new Exception(@"n and p should be non-negative");
+            }
         }
-
-        private static void ShiftToRight<T>(this IList<T> source, Int32 index)
-        {
-            source[index + 1] = source[index];
-        }
-
-        public static void WriteLineToConsole<T>(this IEnumerable<T> source, String separator = @" ")
-        {
-            Console.WriteLine(String.Join(separator, source));
-        }
-    }
+	}
 }
+

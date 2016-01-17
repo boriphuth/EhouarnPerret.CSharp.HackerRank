@@ -1,5 +1,5 @@
-//
-// Extensions.cs
+﻿//
+// Solution.cs
 //
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
@@ -26,44 +26,37 @@
 using System;
 using System.Linq;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 
-namespace EhouarnPerret.CSharp.HackerRank.Sandbox.Algorithms.Sorting.Challenge2InsertionSortPart1
+namespace EhouarnPerret.CSharp.HackerRank.Sandbox.DaysOfCode.Day17Exceptions
 {
-    public static class Extensions
+    public static class Solution
     {
-        // Supposedly on an already sorted array
-        public static void SortedInsertionSort<T>(this IList<T> source, Int32 itemToSortIndex) 
+        public static void Main(params String[] arguments)
         {
-            // Except the rightmost cell which is the black sheep
-            var e = source[itemToSortIndex];
+            var calculator = new Calculator();
 
-            var j = itemToSortIndex - 1;
+            var testCaseCount = Int32.Parse(Console.ReadLine());
 
-            var comparer = Comparer<T>.Default;
-
-            while ((j >= 0) && (comparer.Compare(source[j], e) > 0))
+            for (var testCase = 0; testCase < testCaseCount; testCase++)
             {
-                source.ShiftToRight(j);
+                var array = Array.ConvertAll(Console.ReadLine().Split(new [] { ' ' }, StringSplitOptions.RemoveEmptyEntries), Convert.ToInt32);
 
-                source.WriteLineToConsole();
+                var n = array[0];
 
-                j--;
+                var p = array[1]; 
+
+                try
+                {
+                    var answer = calculator.Power(n,p);
+
+                    Console.WriteLine(answer);
+                }
+                catch(Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                }
             }
-
-            source[j + 1] = e;
-
-            source.WriteLineToConsole();
-        }
-
-        private static void ShiftToRight<T>(this IList<T> source, Int32 index)
-        {
-            source[index + 1] = source[index];
-        }
-
-        public static void WriteLineToConsole<T>(this IEnumerable<T> source, String separator = @" ")
-        {
-            Console.WriteLine(String.Join(separator, source));
         }
     }
 }
+
