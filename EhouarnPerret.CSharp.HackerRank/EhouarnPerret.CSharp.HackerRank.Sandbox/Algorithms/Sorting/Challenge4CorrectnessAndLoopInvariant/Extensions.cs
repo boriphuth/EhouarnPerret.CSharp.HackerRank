@@ -27,11 +27,17 @@
 using System;
 using System.Collections.Generic;
 
-namespace EhouarnPerret.CSharp.HackerRank.Sandbox.Algorithms.Sorting.Challenge3InsertionSortPart2
+namespace EhouarnPerret.CSharp.HackerRank.Sandbox.Algorithms.Sorting.Challenge4CorrectnessAndLoopInvariant
 {
     public static class Extensions
     {
-        // Supposedly on an already sorted array
+        /// <summary>
+        /// Insertion sort for alread sorted data except the last one.
+        /// </summary>
+        /// <returns>The number of shifts required to sort.</returns>
+        /// <param name="source">Source.</param>
+        /// <param name="itemToSortIndex">Item to sort index.</param>
+        /// <typeparam name="T">The 1st type parameter.</typeparam>
         private static void SortedInsertionSort<T>(this IList<T> source, Int32 itemToSortIndex) 
         {
             // Except the rightmost cell which is the black sheep
@@ -41,16 +47,15 @@ namespace EhouarnPerret.CSharp.HackerRank.Sandbox.Algorithms.Sorting.Challenge3I
 
             var comparer = Comparer<T>.Default;
 
+            // The mistake is that basically it was j > 0 instead of j >= 0...
             while ((j >= 0) && (comparer.Compare(source[j], e) > 0))
             {
                 source.ShiftToRight(j);
+
                 j--;
             }
 
             source[j + 1] = e;
-
-            // This time only when we insert the item in the right slot
-            source.WriteLineToConsole();
         }
 
         private static void ShiftToRight<T>(this IList<T> source, Int32 index)
@@ -68,7 +73,7 @@ namespace EhouarnPerret.CSharp.HackerRank.Sandbox.Algorithms.Sorting.Challenge3I
             }
         }
 
-        private static void WriteLineToConsole<T>(this IEnumerable<T> source, String separator = @" ")
+        public static void WriteLineToConsole<T>(this IEnumerable<T> source, String separator = @" ")
         {
             Console.WriteLine(String.Join(separator, source));
         }

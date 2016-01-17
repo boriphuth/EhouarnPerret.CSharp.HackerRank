@@ -27,13 +27,15 @@
 using System;
 using System.Collections.Generic;
 
-namespace EhouarnPerret.CSharp.HackerRank.Sandbox.Algorithms.Sorting.Challenge3InsertionSortPart2
+namespace EhouarnPerret.CSharp.HackerRank.Sandbox.Algorithms.Sorting.Challenge5RunningTimeOfAlgorithms
 {
     public static class Extensions
     {
         // Supposedly on an already sorted array
-        private static void SortedInsertionSort<T>(this IList<T> source, Int32 itemToSortIndex) 
+        private static UInt32 SortedInsertionSort<T>(this IList<T> source, Int32 itemToSortIndex) 
         {
+            var shiftCount = 0u;
+
             // Except the rightmost cell which is the black sheep
             var e = source[itemToSortIndex];
 
@@ -44,13 +46,18 @@ namespace EhouarnPerret.CSharp.HackerRank.Sandbox.Algorithms.Sorting.Challenge3I
             while ((j >= 0) && (comparer.Compare(source[j], e) > 0))
             {
                 source.ShiftToRight(j);
+
+                shiftCount++;
+
                 j--;
             }
 
             source[j + 1] = e;
 
-            // This time only when we insert the item in the right slot
-            source.WriteLineToConsole();
+            // This time we do not print anything
+            // source.WriteLineToConsole();
+
+            return shiftCount;
         }
 
         private static void ShiftToRight<T>(this IList<T> source, Int32 index)
@@ -58,14 +65,18 @@ namespace EhouarnPerret.CSharp.HackerRank.Sandbox.Algorithms.Sorting.Challenge3I
             source[index + 1] = source[index];
         }
 
-        public static void InsertionSort<TComparable>(this IList<TComparable> source)
+        public static UInt32 InsertionSort<TComparable>(this IList<TComparable> source)
             where TComparable : IComparable<TComparable>
         {
+            var shiftCount = 0u;
+
             // Starts from i = 1 => micro-optimization => "already sorted"
             for (var i = 1; i < source.Count; i++)
             {
-                source.SortedInsertionSort(i);
+                shiftCount += source.SortedInsertionSort(i);
             }
+
+            return shiftCount;
         }
 
         private static void WriteLineToConsole<T>(this IEnumerable<T> source, String separator = @" ")

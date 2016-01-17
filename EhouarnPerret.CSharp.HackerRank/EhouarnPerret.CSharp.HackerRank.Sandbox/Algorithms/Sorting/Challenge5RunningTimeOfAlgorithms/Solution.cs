@@ -1,5 +1,5 @@
-//
-// Extensions.cs
+﻿//
+// Solution.cs
 //
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
@@ -24,46 +24,28 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-using System.Linq;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 
-namespace EhouarnPerret.CSharp.HackerRank.Sandbox.Algorithms.Sorting.Challenge2InsertionSortPart1
+namespace EhouarnPerret.CSharp.HackerRank.Sandbox.Algorithms.Sorting.Challenge5RunningTimeOfAlgorithms
 {
-    public static class Extensions
+    public static class Solution
     {
-        // Supposedly on an already sorted array
-        public static void SortedInsertionSort<T>(this IList<T> source, Int32 itemToSortIndex) 
+        public static void Main(params String[] arguments) 
         {
-            // Except the rightmost cell which is the black sheep
-            var e = source[itemToSortIndex];
+            var n = Convert.ToInt32(Console.ReadLine());
 
-            var j = itemToSortIndex - 1;
+            var arrayStringTokens = Console.ReadLine().Split(new [] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
 
-            var comparer = Comparer<T>.Default;
+            var array = Array.ConvertAll(arrayStringTokens, Convert.ToInt32);
 
-            while ((j >= 0) && (comparer.Compare(source[j], e) > 0))
+            if (array.Length != n)
             {
-                source.ShiftToRight(j);
-
-                source.WriteLineToConsole();
-
-                j--;
+                throw new ArgumentException(nameof(n));
             }
-
-            source[j + 1] = e;
-
-            source.WriteLineToConsole();
-        }
-
-        private static void ShiftToRight<T>(this IList<T> source, Int32 index)
-        {
-            source[index + 1] = source[index];
-        }
-
-        private static void WriteLineToConsole<T>(this IEnumerable<T> source, String separator = @" ")
-        {
-            Console.WriteLine(String.Join(separator, source));
+            else
+            {
+                Console.WriteLine(array.InsertionSort());
+            }
         }
     }
 }
+
