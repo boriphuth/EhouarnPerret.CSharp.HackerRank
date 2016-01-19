@@ -24,6 +24,9 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
+using System.Security.Policy;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace EhouarnPerret.CSharp.HackerRank.Sandbox.Algorithms.Strings.Challenge9SherlockAndAnagrams
 {
@@ -37,9 +40,10 @@ namespace EhouarnPerret.CSharp.HackerRank.Sandbox.Algorithms.Strings.Challenge9S
             {
                 var word = Console.ReadLine();
 
-
+                Console.WriteLine(word.CountSubstringAnagramPairs());
             }
         }
     }
+
 }
 
