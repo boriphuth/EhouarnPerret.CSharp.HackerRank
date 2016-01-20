@@ -24,9 +24,8 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-using System.Collections.Generic;
 
-namespace EhouarnPerret.CSharp.HackerRank.Sandbox.Algorithms.Sorting.Challenge6QuickSortPartition
+namespace EhouarnPerret.CSharp.HackerRank.Sandbox.Algorithms.Sorting.Challenge6QuickSort1Partition
 {
     public static class Solution
     {
@@ -44,41 +43,8 @@ namespace EhouarnPerret.CSharp.HackerRank.Sandbox.Algorithms.Sorting.Challenge6Q
             }
             else
             {
-
+                array.OrderedPartition().WriteLineToConsole();
             }
-        }
-    }
-
-    public static class Extensions
-    {
-//        public static void Partition<T>(this IList<T> source)
-//        {
-//            var pivotIndex = 0;
-//
-//            for (var i = 1; i < source.Count; i++)
-//            {
-//                if (source[i] < source[pivotIndex])
-//                {
-//                    source.Swap(i, pivotIndex);
-//                    pivotIndex = i;
-//                }
-//                else if (source[i] > source[pivotIndex])
-//                {
-//                    
-//                }
-//            }
-//        }
-
-        public static void Swap<T>(this IList<T> source, Int32 index1, Int32 index2)
-        {
-            var temp = source[index1];
-            source[index1] = source[index2];
-            source[index2] = temp;
-        }
-
-        public static void WriteLineToConsole<T>(this IEnumerable<T> source, String separator = @" ")
-        {
-            Console.WriteLine(String.Join(separator, source));
         }
     }
 }
