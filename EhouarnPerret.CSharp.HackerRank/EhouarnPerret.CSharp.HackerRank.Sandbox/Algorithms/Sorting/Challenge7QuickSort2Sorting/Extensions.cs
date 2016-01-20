@@ -66,9 +66,9 @@ namespace EhouarnPerret.CSharp.HackerRank.Sandbox.Algorithms.Sorting.Challenge7Q
             return smaller;
         }
 
-        public static IEnumerable<T> QuickSort(this IEnumerable<T> source)
+        public static IEnumerable<T> QuickSort<T>(this IEnumerable<T> source)
         {
-            
+            return null;
         }
 
         public static void WriteLineToConsole<T>(this IEnumerable<T> source, String separator = @" ")
