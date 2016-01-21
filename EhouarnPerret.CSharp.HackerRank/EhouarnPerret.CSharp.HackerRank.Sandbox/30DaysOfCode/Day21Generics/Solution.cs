@@ -24,25 +24,25 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
+using System.Threading.Tasks;
+using System.Collections.Generic;
 
-namespace EhouarnPerret.CSharp.HackerRank.Sandbox.DaysOfCode.Day16Sorting
+namespace EhouarnPerret.CSharp.HackerRank.Sandbox.DaysOfCode.Day21Generics
 {
     public static class Solution
     {
+        private static void WriteLineToConsole<T>(this IEnumerable<T> source)
+        {
+            Console.WriteLine(String.Join(Environment.NewLine, source));
+        }
+
         public static void Main(params String[] arguments)
         {
-            var n = Convert.ToInt32(Console.ReadLine()); 
+            var int32s = new [] { 1, 2, 3 };
+            var strings = new [] {"Hello", "World"};
 
-            var array = Array.ConvertAll(Console.ReadLine().Split(new [] { ' ' }, StringSplitOptions.RemoveEmptyEntries), Convert.ToInt32);
-
-            if (n != array.Length)
-            {
-                throw new ArgumentException(nameof(n));
-            }
-            else
-            {
-                array.ConsoleWriteLineMinimumAbsoluteDifferencePairs();
-            }
+            int32s.WriteLineToConsole();
+            strings.WriteLineToConsole();
         }
     }
 }

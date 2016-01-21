@@ -26,28 +26,29 @@
 using System;
 using System.Collections.Generic;
 
-using System.Linq;
 
 namespace EhouarnPerret.CSharp.HackerRank.Sandbox.Algorithms.Sorting.Challenge7QuickSort2Sorting
 {
     public static class Extensions
     {
         // Does not need inplace operations like swap or others since we need to keep the orignal order
-        public static IEnumerable<T> OrderedPartition<T>(this IEnumerable<T> source)
+        public static Int32 OrderedPartition<T>(this IList<T> source, Int32 start, Int32 stop)
         {
             var comparer = Comparer<T>.Default;
 
-            var pivot = source.First();
+            var pivot = source[0];
 
             var smaller = new List<T>();
 
             var greater = new List<T>();
 
-            foreach (var item in source.Skip(1))
+            for (var i = start; i <= stop; i++)
             {
+                var item = source[i];
+
                 var comparison = comparer.Compare(item, pivot) < 0;
 
-                Console.WriteLine(@"{1} < {0} = {2}", pivot, item, comparison);
+                // Console.WriteLine(@"{1} < {0} = {2}", pivot, item, comparison);
 
                 if (comparison)
                 {
@@ -59,18 +60,22 @@ namespace EhouarnPerret.CSharp.HackerRank.Sandbox.Algorithms.Sorting.Challenge7Q
                 }
             }
 
+            var pivotIndex = smaller.Count;
+
             smaller.Add(pivot);
 
             smaller.AddRange(greater);
 
-            return smaller;
-        }
 
-        public static IEnumerable<T> QuickSort<T>(this IEnumerable<T> source)
-        {
-            return null;
-        }
 
+            return pivotIndex;
+        }
+//
+//        public static IList<T> QuickSort<T>(this IList<T> source)
+//        {
+//            var pivotIndex = source.OrderedPartition(0, source.Count - 1);
+//        }
+//
         public static void WriteLineToConsole<T>(this IEnumerable<T> source, String separator = @" ")
         {
             Console.WriteLine(String.Join(separator, source));
