@@ -1,5 +1,5 @@
-﻿//
-// Solution.cs
+//
+// BinaryTreeNode.cs
 //
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
@@ -23,31 +23,25 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
+
 using System;
 
-namespace EhouarnPerret.CSharp.HackerRank.Sandbox.Algorithms.Sorting.Challenge7QuickSort2Sorting
+namespace EhouarnPerret.CSharp.HackerRank.Sandbox.DaysOfCode.Day22BinarySearchTrees
 {
-    public static class Solution
+    public class BinaryTreeNode<T>
     {
-        public static void Main(params String[] arguments) 
+        public BinaryTreeNode<T> Left { get; set; }
+        public BinaryTreeNode<T> Right { get; set; }
+
+        public T Value { get; set; }
+
+        public BinaryTreeNode(T value = default(T), BinaryTreeNode<T> left = null, BinaryTreeNode<T> right = null)
         {
-            var n = 7; //Convert.ToInt32(Console.ReadLine());
+            this.Value = value;
 
-            var arrayStringTokens = @"5 8 1 3 7 9 2".Split(new [] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
-
-            var array = Array.ConvertAll(arrayStringTokens, Convert.ToInt32);
-
-            if (array.Length != n)
-            {
-                throw new ArgumentException(nameof(n));
-            }
-            else
-            {
-                array.QuickSort();
-
-                array.WriteLineToConsole();
-            }
+            this.Left = left;
+            this.Right = right;
         }
     }
+    
 }
-
