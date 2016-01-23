@@ -1,5 +1,5 @@
 //
-// BinaryTree.cs
+// BinaryTreeNode.cs
 //
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
@@ -26,16 +26,22 @@
 
 using System;
 
-namespace EhouarnPerret.CSharp.HackerRank.Sandbox.DaysOfCode.Day22BinarySearchTrees
+namespace EhouarnPerret.CSharp.HackerRank.Sandbox.DaysOfCode.Day23BinaryTreeReview
 {
-    public class BinaryTree<T>
+    public class BinaryTreeNode<T>
     {
-        public BinaryTree(BinaryTreeNode<T> root)
-        {
-            this.Root = root;
-        }
+        public BinaryTreeNode<T> Left { get; set; }
+        public BinaryTreeNode<T> Right { get; set; }
 
-        public BinaryTreeNode<T> Root { get; set; }
+        public T Value { get; set; }
+
+        public BinaryTreeNode(T value = default(T), BinaryTreeNode<T> left = null, BinaryTreeNode<T> right = null)
+        {
+            this.Value = value;
+
+            this.Left = left;
+            this.Right = right;
+        }
     }
     
 }

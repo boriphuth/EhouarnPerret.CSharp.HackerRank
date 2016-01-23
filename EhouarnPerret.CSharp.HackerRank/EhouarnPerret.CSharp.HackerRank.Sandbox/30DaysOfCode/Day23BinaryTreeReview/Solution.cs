@@ -25,8 +25,10 @@
 // THE SOFTWARE.
 using System;
 using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
+using System.CodeDom;
 
-namespace EhouarnPerret.CSharp.HackerRank.Sandbox.DaysOfCode.Day22BinarySearchTrees
+namespace EhouarnPerret.CSharp.HackerRank.Sandbox.DaysOfCode.Day23BinaryTreeReview
 {
     public static class Solution
     {
@@ -41,10 +43,6 @@ namespace EhouarnPerret.CSharp.HackerRank.Sandbox.DaysOfCode.Day22BinarySearchTr
                 var data = Int32.Parse(Console.ReadLine());
                 binaryTreeNode = Solution.BinarySearchTreeInsert(binaryTreeNode,data);            
             }
-
-            var binaryTreeMaximumHeight = Solution.IterativeQueueFindMaximumHeight(binaryTreeNode);
-
-            Console.WriteLine(binaryTreeMaximumHeight);
         }
 
         // Left Node should contains a value which is greater than the value contained in the right node.
@@ -75,94 +73,27 @@ namespace EhouarnPerret.CSharp.HackerRank.Sandbox.DaysOfCode.Day22BinarySearchTr
             }
         }
 
-        public static Int32 RecursiveFindMaximumHeight<T>(BinaryTreeNode<T> root)
+        public static void LeverOrderTraversal<T>(BinaryTreeNode<T> root)
         {
-            if (root == null)
-            {
-                return 0;
-            }
-            else
-            {
-                var leftMaximumHeight = 1 + Solution.RecursiveFindMaximumHeight(root.Left);
-                var rightMaximumHeight = 1 + Solution.RecursiveFindMaximumHeight(root.Right);
-
-                return Math.Max(leftMaximumHeight, rightMaximumHeight);
-            }
-        }
-
-        public static Int32 IterativeQueueFindMaximumHeight<T>(BinaryTreeNode<T> root)
-        {
-            var maximumHeight = 0;
-
-            var queue = new Queue<BinaryTreeNode<T>>(); 
+            var queue = new Queue<BinaryTreeNode<T>>();
 
             queue.Enqueue(root);
 
-            var count = 1;
-
             while(queue.Count > 0)
-            {  
+            {
                 var node = queue.Dequeue();
 
-                count--;  
+                Console.Write(node.Value + " ");
 
-                if(node.Left != null)
-                {  
-                    queue.Enqueue(node.Left);  
-                }  
+                if (node.Left != null)
+                {
+                    queue.Enqueue(node.Left);   
+                }
 
-                if(node.Right != null)
-                {  
-                    queue.Enqueue(node.Right);  
-                }  
-
-                if (count == 0)
-                {  
-                    // Done with one row
-                    maximumHeight++;    
-
-                    // Next row count  
-                    count = queue.Count;   
-                }  
-            }  
-
-            return maximumHeight;  
-        }
-    
-        public static Int32 IterativeStackFindMaximumHeight<T>(BinaryTreeNode<T> root)
-        {
-            if (root == null)
-            {
-                return 0;
-            }
-            else
-            {
-                var stack = new Stack<BinaryTreeNode<T>>();
-
-                var maxDepth = 0;  
-                var previous = NULL;  
-
-                S.push(root);  
-                while (!S.empty())
-                {  
-                    var *curr = S.top();  
-
-                    if (prev == NULL || prev->left == curr || prev->right == curr) {  
-                        if (curr->left)  
-                            S.push(curr->left);  
-                        else if (curr->right)  
-                            S.push(curr->right);  
-                    } else if (curr->left == prev) {  
-                        if (curr->right)  
-                            S.push(curr->right);  
-                    } else {  
-                        S.pop();  
-                    }  
-                    prev = curr;  
-                    if (S.size() > maxDepth)  
-                        maxDepth = S.size();  
-                }  
-                return maxDepth;  
+                if (node.Right != null)
+                {
+                    queue.Enqueue(node.Right);
+                }
             }
         }
     }
