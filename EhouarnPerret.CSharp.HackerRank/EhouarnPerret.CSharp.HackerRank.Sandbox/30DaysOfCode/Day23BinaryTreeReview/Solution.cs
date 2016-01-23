@@ -75,24 +75,31 @@ namespace EhouarnPerret.CSharp.HackerRank.Sandbox.DaysOfCode.Day23BinaryTreeRevi
 
         public static void LeverOrderTraversal<T>(BinaryTreeNode<T> root)
         {
-            var queue = new Queue<BinaryTreeNode<T>>();
-
-            queue.Enqueue(root);
-
-            while(queue.Count > 0)
+            if (root == null)
             {
-                var node = queue.Dequeue();
+                return;
+            }
+            else
+            {
+                var queue = new Queue<BinaryTreeNode<T>>();
 
-                Console.Write(node.Value + " ");
+                queue.Enqueue(root);
 
-                if (node.Left != null)
+                while (queue.Count > 0)
                 {
-                    queue.Enqueue(node.Left);   
-                }
+                    var node = queue.Dequeue();
 
-                if (node.Right != null)
-                {
-                    queue.Enqueue(node.Right);
+                    Console.Write(node.Value + " ");
+
+                    if (node.Left != null)
+                    {
+                        queue.Enqueue(node.Left);   
+                    }
+
+                    if (node.Right != null)
+                    {
+                        queue.Enqueue(node.Right);
+                    }
                 }
             }
         }

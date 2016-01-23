@@ -25,6 +25,7 @@
 // THE SOFTWARE.
 using System;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 
 namespace EhouarnPerret.CSharp.HackerRank.Sandbox.DaysOfCode.Day22BinarySearchTrees
 {
@@ -92,79 +93,121 @@ namespace EhouarnPerret.CSharp.HackerRank.Sandbox.DaysOfCode.Day22BinarySearchTr
 
         public static Int32 IterativeQueueFindMaximumHeight<T>(BinaryTreeNode<T> root)
         {
-            var maximumHeight = 0;
-
-            var queue = new Queue<BinaryTreeNode<T>>(); 
-
-            queue.Enqueue(root);
-
-            var count = 1;
-
-            while(queue.Count > 0)
-            {  
-                var node = queue.Dequeue();
-
-                count--;  
-
-                if(node.Left != null)
-                {  
-                    queue.Enqueue(node.Left);  
-                }  
-
-                if(node.Right != null)
-                {  
-                    queue.Enqueue(node.Right);  
-                }  
-
-                if (count == 0)
-                {  
-                    // Done with one row
-                    maximumHeight++;    
-
-                    // Next row count  
-                    count = queue.Count;   
-                }  
-            }  
-
-            return maximumHeight;  
-        }
-    
-        public static Int32 IterativeStackFindMaximumHeight<T>(BinaryTreeNode<T> root)
-        {
             if (root == null)
             {
                 return 0;
             }
             else
             {
-                var stack = new Stack<BinaryTreeNode<T>>();
+                var maximumHeight = 0;
 
-                var maxDepth = 0;  
-                var previous = NULL;  
+                var queue = new Queue<BinaryTreeNode<T>>(); 
 
-                S.push(root);  
-                while (!S.empty())
+                queue.Enqueue(root);
+
+                var count = queue.Count;
+
+                while (queue.Count > 0)
                 {  
-                    var *curr = S.top();  
+                    var node = queue.Dequeue();
 
-                    if (prev == NULL || prev->left == curr || prev->right == curr) {  
-                        if (curr->left)  
-                            S.push(curr->left);  
-                        else if (curr->right)  
-                            S.push(curr->right);  
-                    } else if (curr->left == prev) {  
-                        if (curr->right)  
-                            S.push(curr->right);  
-                    } else {  
-                        S.pop();  
+                    count--;  
+
+                    if (node.Left != null)
+                    {  
+                        queue.Enqueue(node.Left);  
                     }  
-                    prev = curr;  
-                    if (S.size() > maxDepth)  
-                        maxDepth = S.size();  
+
+                    if (node.Right != null)
+                    {  
+                        queue.Enqueue(node.Right);  
+                    }  
+
+                    // We are done with more level of depth / height
+                    if (count == 0)
+                    {  
+                        // Done with one row
+                        maximumHeight++;    
+
+                        // Next row count  
+                        count = queue.Count;   
+                    }  
                 }  
-                return maxDepth;  
+
+                return maximumHeight;  
             }
         }
+
+        public static Int32 IterativeStackFindMaximumHeight<T>(BinaryTreeNode<T> root)
+        {
+            if (root == null)
+            {
+                return 0;  
+            }
+            else
+            {
+                var maximumHeight = 1;
+
+                var stack = new Stack<BinaryTreeNode<T>>();
+
+                var previousNode = default(BinaryTreeNode<T>);
+
+                stack.Push(root);
+
+                while(stack.Count > 0)
+                {
+                    var node = stack.Pop();
+
+                    if (previousNode == null)
+                    {
+                        
+                    }
+
+                    if (stack.Count > maximumHeight)
+                    {
+                        maximumHeight = stack.Count;
+                    }
+                }
+            }
+        }
+
+    
+//        public static Int32 IterativeStackFindMaximumHeight<T>(BinaryTreeNode<T> root)
+//        {
+//            if (root == null)
+//            {
+//                return 0;
+//            }
+//            else
+//            {
+//                var stack = new Stack<BinaryTreeNode<T>>();
+//
+//                var maxDepth = 0;  
+//                var previous = NULL;  
+//
+//                S.push(root);  
+//                while (!S.empty())
+//                {  
+//                    var *curr = S.top();  
+//
+//                    if (prev == NULL || prev->left == curr || prev->right == curr) {  
+//                        if (curr->left)  
+//                            S.push(curr->left);  
+//                        else if (curr->right)  
+//                            S.push(curr->right);  
+//                    } else if (curr->left == prev) {  
+//                        if (curr->right)  
+//                            S.push(curr->right);  
+//                    } else {  
+//                        S.pop();  
+//                    }  
+//                    prev = curr;  
+//                    if (S.size() > maxDepth)  
+//                        maxDepth = S.size();  
+//                }  
+//                return maxDepth;  
+//            }
+//        }
     }
 }
 
