@@ -25,8 +25,6 @@
 // THE SOFTWARE.
 using System;
 using System.Collections.Generic;
-using System.Security.Cryptography.X509Certificates;
-using System.CodeDom;
 
 namespace EhouarnPerret.CSharp.HackerRank.Sandbox.DaysOfCode.Day23BinaryTreeReview
 {

@@ -23,18 +23,36 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
-
-
 using System;
+using System.Security.AccessControl;
 
-namespace EhouarnPerret.CSharp.HackerRank.Sandbox.DaysOfCode.Day0PrintHelloWorld
+namespace EhouarnPerret.CSharp.HackerRank.Sandbox.Algorithms.Strings.Challenge10PalindromeIndex
 {
-    public static class Solution
+    public static class Solution 
     {
         public static void Main(params String[] arguments)
         {
-            Console.WriteLine(@"Hello World.");
-            Console.WriteLine(@"Welcome to 30 Days of Code.");
+            var testCaseCount = Convert.ToInt32(Console.ReadLine());
+
+            for (var testCase = 0; testCase < testCaseCount; testCase++)
+            {
+                var value = Console.ReadLine();
+
+                Console.WriteLine(value.FindPalindromRemovalIndex());
+            }
+        }
+
+        public static Int32 FindPalindromRemovalIndex(this String value)
+        {
+            var isValueLengthEven = ((value.Length % 2) == 0);
+
+            for (var i = 0; i <= value.Length / 2; i++)
+            {
+                var left = value[i];
+                var right = value[value.Length - 1 - i];
+            }
+
+            return 0;
         }
     }
 }

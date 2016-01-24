@@ -25,7 +25,6 @@
 // THE SOFTWARE.
 using System;
 using System.Collections.Generic;
-using System.Runtime.InteropServices;
 
 namespace EhouarnPerret.CSharp.HackerRank.Sandbox.DaysOfCode.Day22BinarySearchTrees
 {
@@ -90,7 +89,6 @@ namespace EhouarnPerret.CSharp.HackerRank.Sandbox.DaysOfCode.Day22BinarySearchTr
                 return Math.Max(leftMaximumHeight, rightMaximumHeight);
             }
         }
-
         public static Int32 IterativeQueueFindMaximumHeight<T>(BinaryTreeNode<T> root)
         {
             if (root == null)
@@ -137,75 +135,56 @@ namespace EhouarnPerret.CSharp.HackerRank.Sandbox.DaysOfCode.Day22BinarySearchTr
                 return maximumHeight;  
             }
         }
-
-        public static Int32 IterativeStackFindMaximumHeight<T>(BinaryTreeNode<T> root)
-        {
-            if (root == null)
-            {
-                return 0;  
-            }
-            else
-            {
-                var maximumHeight = 1;
-
-                var stack = new Stack<BinaryTreeNode<T>>();
-
-                var previousNode = default(BinaryTreeNode<T>);
-
-                stack.Push(root);
-
-                while(stack.Count > 0)
-                {
-                    var node = stack.Pop();
-
-                    if (previousNode == null)
-                    {
-                        
-                    }
-
-                    if (stack.Count > maximumHeight)
-                    {
-                        maximumHeight = stack.Count;
-                    }
-                }
-            }
-        }
-
-    
 //        public static Int32 IterativeStackFindMaximumHeight<T>(BinaryTreeNode<T> root)
 //        {
 //            if (root == null)
 //            {
-//                return 0;
+//                return 0;  
 //            }
 //            else
 //            {
+//                var maximumHeight = 1;
+//
 //                var stack = new Stack<BinaryTreeNode<T>>();
 //
-//                var maxDepth = 0;  
-//                var previous = NULL;  
+//                var previousNode = default(BinaryTreeNode<T>);
 //
-//                S.push(root);  
-//                while (!S.empty())
-//                {  
-//                    var *curr = S.top();  
+//                stack.Push(root);
 //
-//                    if (prev == NULL || prev->left == curr || prev->right == curr) {  
-//                        if (curr->left)  
-//                            S.push(curr->left);  
-//                        else if (curr->right)  
-//                            S.push(curr->right);  
-//                    } else if (curr->left == prev) {  
-//                        if (curr->right)  
-//                            S.push(curr->right);  
-//                    } else {  
-//                        S.pop();  
-//                    }  
-//                    prev = curr;  
-//                    if (S.size() > maxDepth)  
-//                        maxDepth = S.size();  
-//                }  
-//                return maxDepth;  
+//                while (stack.Count > 0)
+//                {
+//                    var currentNode = stack.Pop();
+//
+//                    if ((previousNode == null) || (previousNode == currentNode.Left) || (previousNode == currentNode.Right))
+//                    {
+//                        if (currentNode.Left != null)
+//                        {
+//                            stack.Push(currentNode.Left);
+//                        }
+//                        else if(currentNode.Right != null)
+//                        {
+//                            stack.Push(currentNode.Right);                            
+//                        }
+//                    }
+//                    else if (currentNode.Left == previousNode.Left)
+//                    {
+//                        if (currentNode.Right != null)
+//                        {
+//                            stack.Push(currentNode.Right);                            
+//                        }
+//                    }
+//                    else 
+//                    {
+//                        stack.Pop();
+//                    }
+//
+//                    previousNode = currentNode;
+//
+//                    if (stack.Count > maximumHeight)
+//                    {
+//                        maximumHeight = stack.Count;
+//                    }
+//                }
 //            }
 //        }
     }

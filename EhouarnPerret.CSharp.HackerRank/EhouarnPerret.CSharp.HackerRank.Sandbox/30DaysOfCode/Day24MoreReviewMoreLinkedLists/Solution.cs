@@ -23,29 +23,29 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
+
 using System;
 
-namespace EhouarnPerret.CSharp.HackerRank.Sandbox.Algorithms.Sorting.Challenge6QuickSort1Partition
+namespace EhouarnPerret.CSharp.HackerRank.Sandbox.DaysOfCode.Day24MoreReviewMoreLinkedLists
 {
     public static class Solution
     {
-        public static void Main(params String[] arguments) 
+        public static void Main(params String[] arguments)
         {
-            var n = Convert.ToInt32(Console.ReadLine());
+            var testCaseCount = Int32.Parse(Console.ReadLine());
 
-            var arrayStringTokens = Console.ReadLine().Split(new [] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+            var linkedListNode = default(LinkedListNode<Int32>);
 
-            var array = Array.ConvertAll(arrayStringTokens, Convert.ToInt32);
-
-            if (array.Length != n)
+            for (var testCase = 0; testCase < testCaseCount; testCase++)
             {
-                throw new ArgumentException(nameof(n));
+                var value = Int32.Parse(Console.ReadLine());
+
+                linkedListNode = LinkedListNode<Int32>.TailInsert(linkedListNode, value);
             }
-            else
-            {
-                array.OrderedPartition().WriteLineToConsole();
-            }
+
+            linkedListNode.RemoveDuplicates();
+
+            linkedListNode.WriteFollowingNodesLineToConsole();
         }
     }
 }
-
