@@ -24,7 +24,6 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-using System.Security.AccessControl;
 
 namespace EhouarnPerret.CSharp.HackerRank.Sandbox.Algorithms.Strings.Challenge10PalindromeIndex
 {
@@ -44,15 +43,43 @@ namespace EhouarnPerret.CSharp.HackerRank.Sandbox.Algorithms.Strings.Challenge10
 
         public static Int32 FindPalindromRemovalIndex(this String value)
         {
-            var isValueLengthEven = ((value.Length % 2) == 0);
-
             for (var i = 0; i <= value.Length / 2; i++)
             {
                 var left = value[i];
+
                 var right = value[value.Length - 1 - i];
+
+                if (left != right)
+                {
+                    if (value.Remove(i, 1).IsPalindrome())
+                    {
+                        return i;
+                    }
+                    else
+                    {
+                        return value.Length - 1 - i;
+                    }
+                }
             }
 
-            return 0;
+            return -1;
+        }
+
+        private static Boolean IsPalindrome (this String value)
+        {
+            for (var i = 0; i <= value.Length / 2; i++)
+            {
+                var left = value[i];
+
+                var right = value[value.Length - 1 - i];
+
+                if (left != right)
+                {
+                    return false;
+                }
+            }
+
+            return true;
         }
     }
 }
