@@ -1,5 +1,5 @@
 ﻿//
-// MakeItAnagram.cs
+// Solution.cs
 //
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
@@ -24,44 +24,23 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-using System.Text;
 
-namespace EhouarnPerret.CSharp.HackerRank.Sandbox.Algorithms.Strings.Challenge7MakeItAnagram
+namespace EhouarnPerret.CSharp.HackerRank.Sandbox.Algorithms.Strings.Challenge7Anagram
 {
     public static class Solution
     {
-        // Can make it faster playing with ASCII and cheap arrays
-        // Make it a bit verbose for the sake of understanding...
         public static void Main(params String[] arguments)
         {
-            // Getting inputs
-            var a = Console.ReadLine();
-            var b = Console.ReadLine();
+            var testCaseCount = Convert.ToInt32(Console.ReadLine());
 
-            const Int32 latinAlphabetCharacterCount = 26;
-
-            var aCharacterCount = new Int32[latinAlphabetCharacterCount];
-            var bCharacterCount = new Int32[latinAlphabetCharacterCount];
-            var firstASCIILetterIndex = Encoding.ASCII.GetBytes(new Char[] { 'a' })[0];
-
-            foreach (var character in a)
+            for (var testCase = 0; testCase < testCaseCount; testCase++)
             {
-                aCharacterCount[character - firstASCIILetterIndex]++;
-            }
-            foreach (var character in b)
-            {
-                bCharacterCount[character - firstASCIILetterIndex]++;
-            }
+                var value = Console.ReadLine();
 
-            var minimumDeletionCount = 0;
-
-            for (var i = 0; i < latinAlphabetCharacterCount; i++)
-            {
-                minimumDeletionCount += Math.Abs(aCharacterCount[i] - bCharacterCount[i]);
+                Console.WriteLine(value.ComprehensiveCountRequireAnagramChanges());
             }
-
-            Console.WriteLine(minimumDeletionCount);
         }
+
     }
 }
 

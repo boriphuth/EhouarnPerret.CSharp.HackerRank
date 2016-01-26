@@ -1,5 +1,5 @@
 ﻿//
-// Comprehensive Solution.cs
+// MakeItAnagram.cs
 //
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
@@ -24,42 +24,22 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-using System.Linq;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
+using System.Text;
 
-namespace EhouarnPerret.CSharp.HackerRank.Sandbox.Algorithms.Strings.Challenge7MakeItAnagram
+namespace EhouarnPerret.CSharp.HackerRank.Sandbox.Algorithms.Strings.Challenge6MakeItAnagram
 {
-    public static class ComprehensiveSolution
+    public static class Solution
     {
-        // There might be a much more efficient way to do that...
-        // Should check hamming distance
+        // Can make it faster playing with ASCII and cheap arrays
+        // Make it a bit verbose for the sake of understanding...
         public static void Main(params String[] arguments)
         {
             // Getting inputs
             var a = Console.ReadLine();
             var b = Console.ReadLine();
 
-            // Get distinct symbols in both a and b
-            // If we are sure that inputs are only a-z lowercase characters
-            // then a simple 26 slots array can be fair enough
-            var symbols = a.Union(b).Distinct();
-
-            // Fetch character frequencies in both a and b
-            // Note you can save up actually one loop with above, still O(N) with a factor
-            // Lower perfomance for the sake of premise clarity 
-            var aCharacterFrequencies = a.ReadOnlyCharacterCount(symbols);
-            var bCharacterFrequencies = b.ReadOnlyCharacterCount(symbols);
-
-            // Compute the minimum deletion count
-            // Simply check the character frequencies and 
-            var minimumDeletionCount = aCharacterFrequencies
-            .Zip(bCharacterFrequencies, (itemA, itemB) => Math.Abs(itemA.Value - itemB.Value))
-            .Sum();
-
-            Console.WriteLine(minimumDeletionCount);
+            Console.WriteLine(a.AnagramMinimumDeletionCount(b));
         }
     }
-
 }
 

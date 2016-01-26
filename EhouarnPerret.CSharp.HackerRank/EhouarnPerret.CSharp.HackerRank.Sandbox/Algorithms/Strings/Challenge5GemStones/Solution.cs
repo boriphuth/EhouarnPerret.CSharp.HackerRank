@@ -1,5 +1,5 @@
-//
-// Extensions.cs
+﻿//
+// Solution.cs
 //
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
@@ -23,34 +23,33 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
-
 using System;
 using System.Linq;
-using System.Collections;
 using System.Collections.Generic;
-using EhouarnPerret.CSharp.HackerRank.Sandbox.DaysOfCode.Day19Interfaces;
 
-namespace EhouarnPerret.CSharp.HackerRank.Sandbox.DaysOfCode.Day19Interfaces
+namespace EhouarnPerret.CSharp.HackerRank.Sandbox.Algorithms.Strings.Challenge5GemStones
 {
-    public static class Extensions
+    public static class Solution
     {
-        public static IEnumerable<Int32> ToFactors(this Int32 value)
+        // There might be a much more efficient way to do that...
+        // Should check hamming distance
+        public static void Main(params String[] arguments)
         {
-            var squareRoot = Convert.ToInt32(Math.Floor (Math.Sqrt(value)));
+            // Number of rocks / strings
+            var n = Convert.ToInt32(Console.ReadLine());
 
-            for (var factor = 1; factor <= squareRoot; factor++)
+            var inputs = new IEnumerable<Char>[n];
+
+            for (var i = 0; i < n; i++)
             {
-                if((value % factor) == 0)
-                {
-                    yield return factor;
-
-                    // We don't have to add the square root twice
-                    if (factor != (value / factor))
-                    { 
-                        yield return value / factor;
-                    }
-                }
+                inputs[i] = Console.ReadLine();
             }
+
+            // Common elements (characters) to all the rocks 
+            var commonCharacterCount = inputs.Aggregate(Enumerable.Intersect).Count();
+
+            Console.WriteLine(commonCharacterCount);
         }
     }
 }
+

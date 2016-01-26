@@ -1,5 +1,5 @@
-﻿//
-// Solution.cs
+//
+// Extensions.cs
 //
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
@@ -23,33 +23,39 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
+
 using System;
-using System.Linq;
+using System.Runtime.InteropServices;
 using System.Collections.Generic;
 
-namespace EhouarnPerret.CSharp.HackerRank.Sandbox.Algorithms.Strings.Challenge6GemStones
+namespace EhouarnPerret.CSharp.HackerRank.Sandbox.DaysOfCode.Day25RunningTime
 {
-    public static class Solution
+    public static class Extensions
     {
-        // There might be a much more efficient way to do that...
-        // Should check hamming distance
-        public static void Main(params String[] arguments)
+        public static Boolean IsPrime(this UInt64 value)
         {
-            // Number of rocks / strings
-            var n = Convert.ToInt32(Console.ReadLine());
+            var factors = new HashSet<UInt64>(value.ToFactors());
 
-            var inputs = new IEnumerable<Char>[n];
+            return ((value != 1) && factors.Contains(1) & factors.Contains(value) & (factors.Count <= 2));
+        }
 
-            for (var i = 0; i < n; i++)
+        private static IEnumerable<UInt64> ToFactors(this UInt64 value)
+        {
+            var squareRoot = Convert.ToUInt64(Math.Floor (Math.Sqrt(value)));
+
+            for (var factor = 1ul; factor <= squareRoot; factor++)
             {
-                inputs[i] = Console.ReadLine();
+                if((value % factor) == 0)
+                {
+                    yield return factor;
+
+                    // We don't have to add the square root twice
+                    if (factor != (value / factor))
+                    { 
+                        yield return value / factor;
+                    }
+                }
             }
-
-            // Common elements (characters) to all the rocks 
-            var commonCharacterCount = inputs.Aggregate(Enumerable.Intersect).Count();
-
-            Console.WriteLine(commonCharacterCount);
         }
     }
 }
-

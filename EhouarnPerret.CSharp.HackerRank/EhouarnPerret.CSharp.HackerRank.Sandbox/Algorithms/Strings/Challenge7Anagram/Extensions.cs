@@ -1,4 +1,4 @@
-//
+﻿//
 // Extensions.cs
 //
 // Author:
@@ -23,24 +23,22 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
-
 using System;
 using System.Linq;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
-namespace EhouarnPerret.CSharp.HackerRank.Sandbox.Algorithms.Strings.Challenge7MakeItAnagram
+namespace EhouarnPerret.CSharp.HackerRank.Sandbox.Algorithms.Strings.Challenge7Anagram
 {
-
     public static class Extensions
     {
-        public static Dictionary<Char, Int32> CharacterCount (this String value)
+        private static Dictionary<Char, Int32> CharacterCount (this String value)
         {
             return value
                 .GroupBy(character => character)
                 .ToDictionary(item => item.Key, item => item.Count());
         }
-        public static Dictionary<Char, Int32> OrderedCharacterCount (this String value)
+        private static Dictionary<Char, Int32> OrderedCharacterCount (this String value)
         {
             return value
                 .GroupBy(character => character)
@@ -48,7 +46,7 @@ namespace EhouarnPerret.CSharp.HackerRank.Sandbox.Algorithms.Strings.Challenge7M
                 .ToDictionary(item => item.Key, item => item.Count());
         }
 
-        public static Dictionary<Char, Int32> CharacterCount (this String value, IEnumerable<Char> symbols)
+        private static Dictionary<Char, Int32> CharacterCount (this String value, IEnumerable<Char> symbols)
         {
             var characterCount = symbols.ToDictionary(character => character, character => 0);
 
@@ -59,7 +57,7 @@ namespace EhouarnPerret.CSharp.HackerRank.Sandbox.Algorithms.Strings.Challenge7M
 
             return characterCount;
         }
-        public static Dictionary<Char, Int32> OrderedCharacterCount (this String value, IEnumerable<Char> symbols)
+        private static Dictionary<Char, Int32> OrderedCharacterCount (this String value, IEnumerable<Char> symbols)
         {
             var characterCount = symbols
                 .OrderBy(symbol => symbol)
@@ -72,32 +70,69 @@ namespace EhouarnPerret.CSharp.HackerRank.Sandbox.Algorithms.Strings.Challenge7M
 
             return characterCount;
         }
-        public static ReadOnlyDictionary<Char, Int32> ReadOnlyCharacterCount (this String value, IEnumerable<Char> symbols)
+
+        private static ReadOnlyDictionary<Char, Int32> ReadOnlyCharacterCount (this String value, IEnumerable<Char> symbols)
+        {
+            return value.CharacterCount(symbols).AsReadOnly();
+        }
+        private static ReadOnlyDictionary<Char, Int32> ReadOnlyOrderedCharacterCount (this String value, IEnumerable<Char> symbols)
         {
             return value.CharacterCount(symbols).AsReadOnly();
         }
 
-        public static ReadOnlyDictionary<Char, Int32> ReadOnlyOrderedCharacterCount (this String value, IEnumerable<Char> symbols)
-        {
-            return value.CharacterCount(symbols).AsReadOnly();
-        }
-
-        public static ReadOnlyDictionary<Char, Int32> ReadOnlyCharacterCount (this String value)
+        private static ReadOnlyDictionary<Char, Int32> ReadOnlyCharacterCount (this String value)
         {
             return value
                 .CharacterCount()
                 .AsReadOnly();
         }
-        public static ReadOnlyDictionary<Char, Int32> ReadOnlyOrderedCharacterCount (this String value)
+        private static ReadOnlyDictionary<Char, Int32> ReadOnlyOrderedCharacterCount (this String value)
         {
             return value
                 .OrderedCharacterCount()
                 .AsReadOnly();
         }
 
-        public static ReadOnlyDictionary<TKey, TValue> AsReadOnly <TKey, TValue> (this IDictionary<TKey, TValue> source)
+        private static ReadOnlyDictionary<TKey, TValue> AsReadOnly <TKey, TValue> (this IDictionary<TKey, TValue> source)
         {
             return new ReadOnlyDictionary<TKey, TValue>(source);
         }
+
+        public static Int32 ComprehensiveCountRequireAnagramChanges(this String value)
+        {
+            // String should be the same length to be anagram, since we suppose that:
+            // value.Length = string1.Length + string2.Length
+            // |string1.Length - string2.Length| <= 1
+
+            if ((value.Length % 2) != 0)
+            {
+                return -1;
+            }
+            else
+            {
+                var a = value.Substring(0, value.Length / 2);
+                var b = value.Substring(value.Length / 2, value.Length / 2);
+
+                // Get distinct symbols in both a and b
+                // If we are sure that inputs are only a-z lowercase characters
+                // then a simple 26 slots array can be fair enough
+                var symbols = a.Union(b).Distinct();
+
+                // Fetch character frequencies in both a and b
+                // Note you can save up actually one loop with above, still O(N) with a factor
+                // Lower perfomance for the sake of premise clarity 
+                var aCharacterFrequencies = a.ReadOnlyCharacterCount(symbols);
+                var bCharacterFrequencies = b.ReadOnlyCharacterCount(symbols);
+
+                // Compute the minimum change count
+                // Simply check the character frequencies and 
+                var changeCount = aCharacterFrequencies
+                    .Zip(bCharacterFrequencies, (itemA, itemB) => Math.Abs(itemA.Value - itemB.Value))
+                    .Sum();
+
+                return changeCount;
+            }
+        }
     }
 }
+

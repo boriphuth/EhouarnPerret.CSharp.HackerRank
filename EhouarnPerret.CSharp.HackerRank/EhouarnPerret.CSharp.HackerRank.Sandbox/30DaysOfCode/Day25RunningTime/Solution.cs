@@ -1,5 +1,5 @@
-//
-// Extensions.cs
+﻿//
+// Solution.cs
 //
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
@@ -23,34 +23,32 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
-
 using System;
-using System.Linq;
-using System.Collections;
+using System.Runtime.InteropServices;
 using System.Collections.Generic;
-using EhouarnPerret.CSharp.HackerRank.Sandbox.DaysOfCode.Day19Interfaces;
 
-namespace EhouarnPerret.CSharp.HackerRank.Sandbox.DaysOfCode.Day19Interfaces
+namespace EhouarnPerret.CSharp.HackerRank.Sandbox.DaysOfCode.Day25RunningTime
 {
-    public static class Extensions
+    public static class Solution
     {
-        public static IEnumerable<Int32> ToFactors(this Int32 value)
+        public static void Main(params String[] arguments)
         {
-            var squareRoot = Convert.ToInt32(Math.Floor (Math.Sqrt(value)));
+            var testCaseCount = Convert.ToByte(Console.ReadLine());
 
-            for (var factor = 1; factor <= squareRoot; factor++)
+            for (var testCase = 0; testCase < testCaseCount; testCase++)
             {
-                if((value % factor) == 0)
-                {
-                    yield return factor;
+                var n = Convert.ToUInt64(Console.ReadLine());
 
-                    // We don't have to add the square root twice
-                    if (factor != (value / factor))
-                    { 
-                        yield return value / factor;
-                    }
+                if (n.IsPrime())
+                {
+                    Console.WriteLine(@"Prime");
+                }
+                else
+                {
+                    Console.WriteLine(@"Not prime");
                 }
             }
         }
     }
 }
+
