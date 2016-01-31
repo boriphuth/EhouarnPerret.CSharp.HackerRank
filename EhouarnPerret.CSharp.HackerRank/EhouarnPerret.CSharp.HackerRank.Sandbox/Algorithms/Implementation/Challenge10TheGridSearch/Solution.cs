@@ -24,34 +24,15 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-using System.Text.RegularExpressions;
+using System.Linq;
+using System.Runtime.Remoting;
 
-namespace EhouarnPerret.CSharp.HackerRank.Sandbox.DaysOfCode.Day28RegexPatterns
+namespace EhouarnPerret.CSharp.HackerRank.Sandbox.Algorithms.Implementation.Challenge10TheGridSearch
 {
     public static class Solution
     {
         public static void Main(params String[] arguments) 
         {
-            var testCaseCount = Convert.ToByte(Console.ReadLine());
-
-            for (var testCase = 0; testCase < testCaseCount; testCase++)
-            {
-                var regexPattern = Console.ReadLine();
-
-                try
-                {
-                    // C# is actually too tolerant in that regard
-                    // The code should be written in Java to get the appropriate result on HackerRank
-                    // Analysis disable once ObjectCreationAsStatement
-                    new Regex(regexPattern, RegexOptions.Compiled);
-
-                    Console.WriteLine(@"Valid");
-                }
-                catch 
-                {
-                    Console.WriteLine(@"Invalid");
-                }
-            }
         }
     }
 }
