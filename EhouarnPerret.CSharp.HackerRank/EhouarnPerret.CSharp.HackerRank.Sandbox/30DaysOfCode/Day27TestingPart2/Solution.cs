@@ -25,7 +25,6 @@
 // THE SOFTWARE.
 using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace EhouarnPerret.CSharp.HackerRank.Sandbox.DaysOfCode.Day27TestingPart2
 {
@@ -33,35 +32,51 @@ namespace EhouarnPerret.CSharp.HackerRank.Sandbox.DaysOfCode.Day27TestingPart2
     {
         public static void Main(params String[] arguments) 
         {
-//            var testCaseCount = 5; //Convert.ToInt32(Console.ReadLine());
-//
-//            var testCaseData = new List<Tuple<Int32, IEnumerable<Int32>>>();
-//
-//            // N should be distinct accross all the test cases
-//
-//            for(var testCase = 0; testCase < testCaseCount; testCase++)
-//            {
-//                var studentCountCancellationThresholdString = ; //Console.ReadLine().Split(new [] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
-//
-//                var studentCount = Convert.ToInt32(studentCountCancellationThresholdString[0]);
-//
-//                var cancellationThreshold = Convert.ToInt32(studentCountCancellationThresholdString[1]);
-//
-//                var arrivalTimesString = Console.ReadLine().Split(new [] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
-//
-//                var arrivalTimes = Array.ConvertAll(arrivalTimesString, Int32.Parse).Take(studentCount);
-//
-//                var onTimeStudentCount = arrivalTimes.Count(arrivalTime => arrivalTime <= 0);
-//
-//                if (onTimeStudentCount < cancellationThreshold)
-//                {
-//                    Console.WriteLine(@"YES");
-//                }
-//                else
-//                {
-//                    Console.WriteLine(@"NO");
-//                }
-//            }
+            // Create the test cases leading to:
+            // YES
+            // NO
+            // YES
+            // NO
+            // YES
+            // etc.
+
+            var testCaseCount = 5;
+
+            var testCases = Solution.GenerateTestCases(testCaseCount);
+
+            Console.WriteLine(testCaseCount);
+
+            foreach (var testCase in testCases)
+            {
+                Console.WriteLine(testCase.StudentCount + " " + testCase.CancellationThreshold);
+                Console.WriteLine(String.Join(@" ", testCase.ArrivalTimes));
+                //Console.WriteLine(testCase.IsCancelled ? @"YES" : @"NO");
+            }
+        }
+
+        private static IEnumerable<TestCase> GenerateTestCases(Int32 testCaseCount)
+        {
+            var testCaseDatum = new List<TestCase>(testCaseCount);
+
+            for (var testCase = 0; testCase < testCaseCount; testCase++) 
+            {
+                var arrivalTimes = new List<Int32>(new [] { -1, 0, 1 });
+
+                var newArrivalTime = (testCase % 2 == 0) ? 1 : -1;
+
+                for (var i = 0; i < testCase; i++)
+                {
+                    arrivalTimes.Add(newArrivalTime);
+                }
+
+                var cancellationThreshold = (testCase % 2 == 0) ? arrivalTimes.Count : arrivalTimes.Count - 2;
+
+                var testCaseData = new TestCase(cancellationThreshold, arrivalTimes);
+
+                testCaseDatum.Add(testCaseData);
+            }
+
+            return testCaseDatum;
         }
     }
 }
