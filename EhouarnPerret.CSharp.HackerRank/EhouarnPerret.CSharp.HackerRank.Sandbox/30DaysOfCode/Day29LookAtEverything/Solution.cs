@@ -24,9 +24,8 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-using System.Text.RegularExpressions;
 
-namespace EhouarnPerret.CSharp.HackerRank.Sandbox.DaysOfCode.Day28RegexPatterns
+namespace EhouarnPerret.CSharp.HackerRank.Sandbox.DaysOfCode.Day29LookAtEverything
 {
     public static class Solution
     {
@@ -36,21 +35,32 @@ namespace EhouarnPerret.CSharp.HackerRank.Sandbox.DaysOfCode.Day28RegexPatterns
 
             for (var testCase = 0; testCase < testCaseCount; testCase++)
             {
-                var regexPattern = Console.ReadLine();
+                var s = Console.ReadLine();
 
-                try
-                {
-                    // C# is actually too tolerant in that regard, the code should be written in Java to work
-                    // Analysis disable once ObjectCreationAsStatement
-                    var regex = new Regex(regexPattern, RegexOptions.Compiled);
+                Console.WriteLine(s.IsFunny() ? @"Funny" : @"Not Funny");
+            }
+        }
+    }
 
-                    Console.WriteLine(@"Valid");
-                }
-                catch 
+    public static class Extensions
+    {
+        public static Boolean IsFunny(this String value)
+        {
+            var reversedCharacters = value.ToCharArray();
+
+            Array.Reverse(reversedCharacters);
+
+            var reversed = new String(reversedCharacters);
+
+            for (var i = 1; i < value.Length; i++)
+            {
+                if (Math.Abs(value[i] - value[i - 1]) != Math.Abs(reversed[i] - reversed[i - 1]))
                 {
-                    Console.WriteLine(@"Invalid");
+                    return false;
                 }
             }
+
+            return true;
         }
     }
 }
