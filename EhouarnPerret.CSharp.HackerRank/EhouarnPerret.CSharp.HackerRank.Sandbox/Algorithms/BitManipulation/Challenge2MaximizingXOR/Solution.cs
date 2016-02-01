@@ -31,6 +31,25 @@ namespace EhouarnPerret.CSharp.HackerRank.Sandbox.Algorithms.BitManipulation.Cha
     {
         public static void Main(params String[] args)
         {
+            var left = Convert.ToInt32(Console.ReadLine());
+            var right = Convert.ToInt32(Console.ReadLine());
+            var result = Solution.MaxXor(left, right);
+
+            Console.WriteLine(result);
+        }
+
+        public static Int32 MaxXor(Int32 left, Int32 right)
+        {
+            // First bit to 1 is where left and right start to differ.
+            var result = left ^ right;
+           
+            // Let's take the bits representation length associated to the result
+            var resultBitLength = Math.Floor(Math.Log(result, 2) + 1);
+
+            // Then we get the number related number to this 1 bits long representation
+            var max = Convert.ToInt32(Math.Pow(2, resultBitLength) - 1);
+
+            return max;
         }
     }
 }
