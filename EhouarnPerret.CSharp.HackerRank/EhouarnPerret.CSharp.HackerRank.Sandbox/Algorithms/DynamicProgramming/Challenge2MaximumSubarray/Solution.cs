@@ -24,23 +24,34 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-using System.Linq;
+using System.IO;
 
-namespace EhouarnPerret.CSharp.HackerRank.Sandbox.DaysOfCode.Day7Arrays
+
+namespace EhouarnPerret.CSharp.HackerRank.Sandbox.Algorithms.DynamicProgramming.Challenge2MaximumSubarray
 {
-    public static class Solution 
+    public static class Solution
     {
-        public static void Main(params String[] args) 
+        public static void Main(params String[] args)
         {
-            var n = Convert.ToInt32(Console.ReadLine());
+            var testCaseCount = Int32.Parse(Console.ReadLine());
 
-            var arrayString = Console.ReadLine().Split(new [] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+            for (var testCase = 0; testCase < testCaseCount; testCase++)
+            {
+                var n = Convert.ToUInt32(Console.ReadLine());
 
-            var array = Array.ConvertAll(arrayString, Int32.Parse);
+                var arrayStringTokens = Console.ReadLine().Split(new [] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
 
-            var reversedArrayString = String.Join(" ", array.Take(n).Reverse().Select(item => item.ToString()));
+                if (n != arrayStringTokens.Length)
+                {
+                    throw new ArgumentOutOfRangeException(nameof(arrayStringTokens));
+                }
+                else
+                {
+                    var array = Array.ConvertAll(arrayStringTokens, Int32.Parse);
 
-            Console.WriteLine(reversedArrayString);
+                    Console.WriteLine(array.Sums());
+                }
+            }
         }
     }
 }

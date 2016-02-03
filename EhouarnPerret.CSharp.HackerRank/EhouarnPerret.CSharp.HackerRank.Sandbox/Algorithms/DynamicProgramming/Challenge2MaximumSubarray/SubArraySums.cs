@@ -1,5 +1,5 @@
-﻿//
-// Solution.cs
+//
+// SubArraySums.cs
 //
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
@@ -23,25 +23,25 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
+
 using System;
-using System.Linq;
 
-namespace EhouarnPerret.CSharp.HackerRank.Sandbox.DaysOfCode.Day7Arrays
+namespace EhouarnPerret.CSharp.HackerRank.Sandbox.Algorithms.DynamicProgramming.Challenge2MaximumSubarray
 {
-    public static class Solution 
+    public struct SubArraySums
     {
-        public static void Main(params String[] args) 
+        public SubArraySums(Int32 contiguous, Int32 nonContiguous)
         {
-            var n = Convert.ToInt32(Console.ReadLine());
+            this.Contiguous = contiguous;
+            this.NonContiguous = nonContiguous;
+        }
 
-            var arrayString = Console.ReadLine().Split(new [] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+        public Int32 Contiguous { get; }
+        public Int32 NonContiguous { get; }
 
-            var array = Array.ConvertAll(arrayString, Int32.Parse);
-
-            var reversedArrayString = String.Join(" ", array.Take(n).Reverse().Select(item => item.ToString()));
-
-            Console.WriteLine(reversedArrayString);
+        public override String ToString()
+        {
+            return String.Format(@"{0} {1}", this.Contiguous, this.NonContiguous);
         }
     }
 }
-
