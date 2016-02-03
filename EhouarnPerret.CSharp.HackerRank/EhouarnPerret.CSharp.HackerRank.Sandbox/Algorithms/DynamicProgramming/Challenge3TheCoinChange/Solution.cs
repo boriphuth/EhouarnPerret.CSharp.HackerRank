@@ -24,33 +24,37 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
+using System.Linq;
+using System.Collections.Generic;
 
-
-namespace EhouarnPerret.CSharp.HackerRank.Sandbox.Algorithms.DynamicProgramming.Challenge2MaximumSubarray
+namespace EhouarnPerret.CSharp.HackerRank.Sandbox.Algorithms.DynamicProgramming.Challenge3TheCoinChange
 {
     public static class Solution
     {
         public static void Main(params String[] args)
         {
-            var testCaseCount = Int32.Parse(Console.ReadLine());
+            var nmString = Console.ReadLine();
+            var nmStringTokens = nmString.Split(new [] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+            var n = Convert.ToInt32(nmStringTokens[0]);
+            var m = Convert.ToInt32(nmStringTokens[1]);
 
-            for (var testCase = 0; testCase < testCaseCount; testCase++)
+            var coinsString = Console.ReadLine();
+            var coinsStringTokens = coinsString.Split(new [] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+            var coins = new HashSet<Int32>(coinsStringTokens.Select(item => Convert.ToInt32(item)));
+
+            if (coins.Count != m)
             {
-                var n = Convert.ToUInt32(Console.ReadLine());
-
-                var arrayStringTokens = Console.ReadLine().Split(new [] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
-
-                if (n != arrayStringTokens.Length)
-                {
-                    throw new ArgumentOutOfRangeException(nameof(arrayStringTokens));
-                }
-                else
-                {
-                    var array = Array.ConvertAll(arrayStringTokens, Int32.Parse);
-
-                    Console.WriteLine(array.Sums());
-                }
+                throw new ArgumentOutOfRangeException(nameof(coins));
             }
+            else
+            {
+                Console.WriteLine(CountCoinChanges);
+            }
+        }
+
+        public static Int32 CountCoinChanges(Int32 n, Int32 m, HashSet<Int32> coins)
+        {
+            
         }
     }
 }
