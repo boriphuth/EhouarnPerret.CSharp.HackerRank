@@ -26,6 +26,7 @@
 using System;
 using System.Linq;
 using System.Collections.Generic;
+using System.Text;
 
 namespace EhouarnPerret.CSharp.HackerRank.Sandbox.Algorithms.DynamicProgramming.Challenge3TheCoinChange
 {
@@ -33,29 +34,69 @@ namespace EhouarnPerret.CSharp.HackerRank.Sandbox.Algorithms.DynamicProgramming.
     {
         public static void Main(params String[] args)
         {
-            var nmString = Console.ReadLine();
-            var nmStringTokens = nmString.Split(new [] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
-            var n = Convert.ToInt32(nmStringTokens[0]);
-            var m = Convert.ToInt32(nmStringTokens[1]);
+            var valueCoinCountString = @"10 4"; //Console.ReadLine();
+            var valueCoinCountStringTokens = valueCoinCountString.Split(new [] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+            var value = Convert.ToInt32(valueCoinCountStringTokens[0]);
+            var coinCount = Convert.ToInt32(valueCoinCountStringTokens[1]);
 
-            var coinsString = Console.ReadLine();
+            var coinsString = @"2 5 3 6"; //Console.ReadLine();
             var coinsStringTokens = coinsString.Split(new [] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
-            var coins = new HashSet<Int32>(coinsStringTokens.Select(item => Convert.ToInt32(item)));
+            var coins = Array.ConvertAll(coinsStringTokens, Convert.ToInt32);
 
-            if (coins.Count != m)
+            if (coins.Length != coinCount)
             {
                 throw new ArgumentOutOfRangeException(nameof(coins));
             }
             else
             {
-                Console.WriteLine(CountCoinChanges);
+                Console.WriteLine(Solution.CountCoinChanges(value, coins.Length,  coins));
             }
         }
 
-        public static Int32 CountCoinChanges(Int32 n, Int32 m, HashSet<Int32> coins)
+        public static UInt32 CountCoinChanges(Int32 value, Int32 coinCount, IList<Int32> coins)
         {
-            
+            // Terminal conditions
+            // Value is zero then... we dot not need any coin
+            if (value == 0)
+            {
+                var stringBuilder = new StringBuilder();
+
+                for (var i = 0; i < coinCount; i++)
+                {
+                    stringBuilder.Append(coins[i]);
+                }
+
+                return 1;
+            }
+            // Value is less than 0... then no solution
+            else if (value < 0)
+            {
+                return 0;
+            }
+            // No more coins and value is positive so no solutions
+            else if (coinCount <= 0)
+            {
+                return 0;
+            }
+            else
+            {
+                // Containing the cointCount - 1 coin and not containing the cointCount -1 coin
+                return Solution.CountCoinChanges(value, coinCount - 1, coins) + Solution.CountCoinChanges(value - coins[coinCount - 1], coinCount, coins);
+            }
         }
     }
+
+    public struct CountCoin
+    {
+        public CountCoin(Int32 value, Int32 amount)
+        {
+            this.Value = value;
+            this.Amount = amount;
+        }
+
+        public Int32 Value { get; }
+        public Int32 Amount { get; }
+    }
+
 }
 
