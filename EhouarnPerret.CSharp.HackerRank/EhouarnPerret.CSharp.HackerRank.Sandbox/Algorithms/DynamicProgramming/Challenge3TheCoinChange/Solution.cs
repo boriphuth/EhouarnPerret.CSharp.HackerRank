@@ -25,6 +25,7 @@
 // THE SOFTWARE.
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace EhouarnPerret.CSharp.HackerRank.Sandbox.Algorithms.DynamicProgramming.Challenge3TheCoinChange
 {
@@ -32,12 +33,12 @@ namespace EhouarnPerret.CSharp.HackerRank.Sandbox.Algorithms.DynamicProgramming.
     {
         public static void Main(params String[] args)
         {
-            var valueCoinCountString = @"10 4"; //Console.ReadLine();
+            var valueCoinCountString = @"4 3"; //Console.ReadLine();
             var valueCoinCountStringTokens = valueCoinCountString.Split(new [] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
             var value = Convert.ToInt32(valueCoinCountStringTokens[0]);
             var coinCount = Convert.ToInt32(valueCoinCountStringTokens[1]);
 
-            var coinsString = @"2 5 3 6"; //Console.ReadLine();
+            var coinsString = @"1 2 3"; //Console.ReadLine();
             var coinsStringTokens = coinsString.Split(new [] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
             var coins = Array.ConvertAll(coinsStringTokens, Convert.ToInt32);
 
@@ -53,11 +54,13 @@ namespace EhouarnPerret.CSharp.HackerRank.Sandbox.Algorithms.DynamicProgramming.
 
         public static UInt32 CountCoinChanges(Int32 value, Int32 coinCount, IList<Int32> coins, String str)
         {
+            Console.WriteLine(@"Call(value = {0}, coinCount = {1}, coins = {2})", value, coinCount, String.Join(@" ", coins.Take(coinCount)));
+
             // Terminal conditions
             // Value is zero then... we dot not need any coin
             if (value == 0)
             {
-                Console.WriteLine(str);
+                Console.WriteLine(@"Solution: " + str);
                 return 1;
             }
             // Value is less than 0... then no solution
@@ -77,18 +80,6 @@ namespace EhouarnPerret.CSharp.HackerRank.Sandbox.Algorithms.DynamicProgramming.
             }
         }
     }
-
-    public struct CountCoin
-    {
-        public CountCoin(Int32 value, Int32 amount)
-        {
-            this.Value = value;
-            this.Amount = amount;
-        }
-
-        public Int32 Value { get; }
-        public Int32 Amount { get; }
-    }
-
+   
 }
 
