@@ -24,9 +24,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-using System.Linq;
 using System.Collections.Generic;
-using System.Text;
 
 namespace EhouarnPerret.CSharp.HackerRank.Sandbox.Algorithms.DynamicProgramming.Challenge3TheCoinChange
 {
@@ -49,23 +47,17 @@ namespace EhouarnPerret.CSharp.HackerRank.Sandbox.Algorithms.DynamicProgramming.
             }
             else
             {
-                Console.WriteLine(Solution.CountCoinChanges(value, coins.Length,  coins));
+                Console.WriteLine(Solution.CountCoinChanges(value, coins.Length,  coins, String.Empty));
             }
         }
 
-        public static UInt32 CountCoinChanges(Int32 value, Int32 coinCount, IList<Int32> coins)
+        public static UInt32 CountCoinChanges(Int32 value, Int32 coinCount, IList<Int32> coins, String str)
         {
             // Terminal conditions
             // Value is zero then... we dot not need any coin
             if (value == 0)
             {
-                var stringBuilder = new StringBuilder();
-
-                for (var i = 0; i < coinCount; i++)
-                {
-                    stringBuilder.Append(coins[i]);
-                }
-
+                Console.WriteLine(str);
                 return 1;
             }
             // Value is less than 0... then no solution
@@ -80,8 +72,8 @@ namespace EhouarnPerret.CSharp.HackerRank.Sandbox.Algorithms.DynamicProgramming.
             }
             else
             {
-                // Containing the cointCount - 1 coin and not containing the cointCount -1 coin
-                return Solution.CountCoinChanges(value, coinCount - 1, coins) + Solution.CountCoinChanges(value - coins[coinCount - 1], coinCount, coins);
+                // Solution of the problem is sum of the subproblems WITH the [cointCount - 1]th coin and WITHOUT [cointCount - 1]th coin
+                return Solution.CountCoinChanges(value, coinCount - 1, coins, str) + Solution.CountCoinChanges(value - coins[coinCount - 1], coinCount, coins, str + coins[coinCount - 1] + " ");
             }
         }
     }
