@@ -48,11 +48,11 @@ namespace EhouarnPerret.CSharp.HackerRank.Sandbox.Algorithms.DynamicProgramming.
             }
             else
             {
-                Console.WriteLine(Solution.CountCoinChanges(value, coins.Length,  coins, String.Empty));
+                Console.WriteLine(Solution.RecursiveCountCoinChanges(value, coins.Length,  coins, String.Empty));
             }
         }
 
-        public static UInt32 CountCoinChanges(Int32 value, Int32 coinCount, IList<Int32> coins, String str)
+        public static UInt32 RecursiveCountCoinChanges(Int32 value, Int32 coinCount, IList<Int32> coins, String str)
         {
             Console.WriteLine(@"Call(value = {0}, coinCount = {1}, coins = {2})", value, coinCount, String.Join(@" ", coins.Take(coinCount)));
 
@@ -76,7 +76,35 @@ namespace EhouarnPerret.CSharp.HackerRank.Sandbox.Algorithms.DynamicProgramming.
             else
             {
                 // Solution of the problem is sum of the subproblems WITH the [cointCount - 1]th coin and WITHOUT [cointCount - 1]th coin
-                return Solution.CountCoinChanges(value, coinCount - 1, coins, str) + Solution.CountCoinChanges(value - coins[coinCount - 1], coinCount, coins, str + coins[coinCount - 1] + " ");
+                return Solution.RecursiveCountCoinChanges(value, coinCount - 1, coins, str) + Solution.RecursiveCountCoinChanges(value - coins[coinCount - 1], coinCount, coins, str + coins[coinCount - 1] + " ");
+            }
+        }
+
+        public static UInt32 IterativeCountCoinChanges(Int32 value, Int32 coinCount, IList<Int32> coins, String str)
+        {
+            Console.WriteLine(@"Call(value = {0}, coinCount = {1}, coins = {2})", value, coinCount, String.Join(@" ", coins.Take(coinCount)));
+
+            // Terminal conditions
+            // Value is zero then... we dot not need any coin
+            if (value == 0)
+            {
+                Console.WriteLine(@"Solution: " + str);
+                return 1;
+            }
+            // Value is less than 0... then no solution
+            else if (value < 0)
+            {
+                return 0;
+            }
+            // No more coins and value is positive so no solutions
+            else if (coinCount <= 0)
+            {
+                return 0;
+            }
+            else
+            {
+                // Solution of the problem is sum of the subproblems WITH the [cointCount - 1]th coin and WITHOUT [cointCount - 1]th coin
+                return Solution.RecursiveCountCoinChanges(value, coinCount - 1, coins, str) + Solution.RecursiveCountCoinChanges(value - coins[coinCount - 1], coinCount, coins, str + coins[coinCount - 1] + " ");
             }
         }
     }
