@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProjectGuid>{F3477372-6FC2-4B38-A427-1396C7EEB682}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>EhouarnPerret.CSharp.HackerRank.Sandbox</RootNamespace>
+    <AssemblyName>EhouarnPerret.CSharp.HackerRank.Sandbox</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <UseMSBuildEngine>False</UseMSBuildEngine>
+    <StartupObject>EhouarnPerret.CSharp.HackerRank.Sandbox.Program</StartupObject>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Externalconsole>true</Externalconsole>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <DebugType>full</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Externalconsole>true</Externalconsole>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Numerics" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="30DaysOfCode\Day0PrintHelloWorld\Solution.cs" />
+    <Compile Include="30DaysOfCode\Day1DataTypes\Solution.cs" />
+    <Compile Include="30DaysOfCode\Day2Arithmetic\Solution.cs" />
+    <Compile Include="30DaysOfCode\Day3IfElseStatements\Extensions.cs" />
+    <Compile Include="30DaysOfCode\Day3IfElseStatements\Solution.cs" />
+    <Compile Include="30DaysOfCode\Day4BooleanOperatorsClassVsInstance\Solution.cs" />
+    <Compile Include="30DaysOfCode\Day4BooleanOperatorsClassVsInstance\Person.cs" />
+    <Compile Include="Algorithms\Warmup\Challenge1SimpleArraySum\Solution.cs" />
+    <Compile Include="Algorithms\Warmup\Challenge2AVeryBigSum\Extensions.cs" />
+    <Compile Include="Algorithms\Warmup\Challenge3DiagonalDifference\Solution.cs" />
+    <Compile Include="Algorithms\Warmup\Challenge2AVeryBigSum\Solution.cs" />
+    <Compile Include="Algorithms\Warmup\Challenge0SolveMeFirst\Solution.cs" />
+    <Compile Include="Algorithms\Warmup\Challenge4PlusMinus\Solution.cs" />
+    <Compile Include="Algorithms\Warmup\Challenge5StairCase\Solution.cs" />
+    <Compile Include="Algorithms\Warmup\Challenge6TimeConversion\Solution.cs" />
+    <Compile Include="Algorithms\Implementation\Challenge1AngryProfessor\Solution.cs" />
+    <Compile Include="Algorithms\Implementation\Challenge2SherlockandTheBeast\Solution.cs" />
+    <Compile Include="30DaysOfCode\Day5Loops\Solution.cs" />
+    <Compile Include="Algorithms\Implementation\Challenge3UtopeanTree\Solution.cs" />
+    <Compile Include="Algorithms\Implementation\Challenge2SherlockandTheBeast\Extensions.cs" />
+    <Compile Include="Algorithms\Implementation\Challenge3UtopeanTree\Extensions.cs" />
+    <Compile Include="Algorithms\Implementation\Challenge4FindDigits\Solution.cs" />
+    <Compile Include="Algorithms\Implementation\Challenge4FindDigits\Extensions.cs" />
+    <Compile Include="30DaysOfCode\Day6Review\Solution.cs" />
+    <Compile Include="Algorithms\Implementation\Challenge5SherlockAndSquares\Solution.cs" />
+    <Compile Include="Algorithms\Implementation\Challenge5SherlockAndSquares\Extensions.cs" />
+    <Compile Include="30DaysOfCode\Day7Arrays\Solution.cs" />
+    <Compile Include="Algorithms\Implementation\Challenge6ServiceLane\Solution.cs" />
+    <Compile Include="Algorithms\Implementation\Challenge7CutTheSticks\Solution.cs" />
+    <Compile Include="Algorithms\Implementation\Challenge8ChocolateFeast\Solution.cs" />
+    <Compile Include="30DaysOfCode\Day8DictionariesAndMaps\Solution.cs" />
+    <Compile Include="DataStructures\Challenge1ArraysDS\Solution.cs" />
+    <Compile Include="DataStructures\Challenge22DArrayDS\Solution.cs" />
+    <Compile Include="30DaysOfCode\Day9Recursion\Solution.cs" />
+    <Compile Include="Algorithms\Strings\Challenge1Pangrams\Solution.cs" />
+    <Compile Include="Algorithms\Strings\Challenge2FunnyString\Solution.cs" />
+    <Compile Include="Algorithms\Strings\Challenge1Pangrams\Extensions.cs" />
+    <Compile Include="Algorithms\Strings\Challenge2FunnyString\Extensions.cs" />
+    <Compile Include="Algorithms\Strings\Challenge3AlternatingCharacters\Solution.cs" />
+    <Compile Include="Algorithms\Strings\Challenge4GameOfThrones1\Solution.cs" />
+    <Compile Include="Algorithms\Strings\Challenge4GameOfThrones1\Extensions.cs" />
+    <Compile Include="30DaysOfCode\Day10BinaryNumbers\Solution.cs" />
+    <Compile Include="30DaysOfCode\Day10BinaryNumbers\ComprehensiveSolution.cs" />
+    <Compile Include="30DaysOfCode\Day10BinaryNumbers\Extensions.cs" />
+    <Compile Include="30DaysOfCode\Day112DArraysMoreReview\Solution.cs" />
+    <Compile Include="Algorithms\Implementation\Challenge9CaesarCipher\Extensions.cs" />
+    <Compile Include="Algorithms\Implementation\Challenge9CaesarCipher\Solution.cs" />
+    <Compile Include="Algorithms\Implementation\Challenge9CaesarCipher\ComprehensiveSolution.cs" />
+    <Compile Include="Algorithms\BitManipulation\Challenge1LonelyInteger\Solution.cs" />
+    <Compile Include="Algorithms\BitManipulation\Challenge1LonelyInteger\Extensions.cs" />
+    <Compile Include="Algorithms\BitManipulation\Challenge2MaximizingXOR\Solution.cs" />
+    <Compile Include="30DaysOfCode\Day12Inheritance\Student.cs" />
+    <Compile Include="30DaysOfCode\Day12Inheritance\StudentGrade.cs" />
+    <Compile Include="30DaysOfCode\Day12Inheritance\GraduateStudent.cs" />
+    <Compile Include="30DaysOfCode\Day12Inheritance\Solution.cs" />
+    <Compile Include="Algorithms\Search\Challenge1SherlockAndArray\Solution.cs" />
+    <Compile Include="30DaysOfCode\Day13AbstractClasses\Solution.cs" />
+    <Compile Include="30DaysOfCode\Day13AbstractClasses\Book.cs" />
+    <Compile Include="30DaysOfCode\Day13AbstractClasses\MyBook.cs" />
+    <Compile Include="Algorithms\Strings\Challenge8TwoStrings\Solution.cs" />
+    <Compile Include="Algorithms\Strings\Challenge8TwoStrings\Extensions.cs" />
+    <Compile Include="Algorithms\Search\Challenge1SherlockAndArray\Extensions.cs" />
+    <Compile Include="30DaysOfCode\Day14ScopeAndImports\Solution.cs" />
+    <Compile Include="30DaysOfCode\Day14ScopeAndImports\Difference.cs" />
+    <Compile Include="30DaysOfCode\Day15LinkedList\Solution.cs" />
+    <Compile Include="30DaysOfCode\Day15LinkedList\LinkedListNode.cs" />
+    <Compile Include="Algorithms\Sorting\Challenge1IntroToTutorialChallenges\Solution.cs" />
+    <Compile Include="Algorithms\Sorting\Challenge2InsertionSortPart1\Solution.cs" />
+    <Compile Include="Algorithms\Sorting\Challenge3InsertionSortPart2\Solution.cs" />
+    <Compile Include="Algorithms\Sorting\Challenge2InsertionSortPart1\Extensions.cs" />
+    <Compile Include="Algorithms\Sorting\Challenge3InsertionSortPart2\Extensions.cs" />
+    <Compile Include="Algorithms\Sorting\Challenge4CorrectnessAndLoopInvariant\Solution.cs" />
+    <Compile Include="Algorithms\Sorting\Challenge4CorrectnessAndLoopInvariant\Extensions.cs" />
+    <Compile Include="Algorithms\Sorting\Challenge5RunningTimeOfAlgorithms\Extensions.cs" />
+    <Compile Include="Algorithms\Sorting\Challenge5RunningTimeOfAlgorithms\Solution.cs" />
+    <Compile Include="30DaysOfCode\Day16Sorting\Solution.cs" />
+    <Compile Include="30DaysOfCode\Day16Sorting\Extensions.cs" />
+    <Compile Include="30DaysOfCode\Day17Exceptions\Solution.cs" />
+    <Compile Include="30DaysOfCode\Day17Exceptions\Calculator.cs" />
+    <Compile Include="30DaysOfCode\Day18QueueAndStacks\Solution.cs" />
+    <Compile Include="30DaysOfCode\Day18QueueAndStacks\Palindrome.cs" />
+    <Compile Include="Algorithms\Strings\Challenge9SherlockAndAnagrams\Solution.cs" />
+    <Compile Include="Algorithms\Strings\Challenge9SherlockAndAnagrams\Extensions.cs" />
+    <Compile Include="30DaysOfCode\Day19Interfaces\Solution.cs" />
+    <Compile Include="30DaysOfCode\Day19Interfaces\Extensions.cs" />
+    <Compile Include="30DaysOfCode\Day19Interfaces\IAdvancedArithmetic.cs" />
+    <Compile Include="30DaysOfCode\Day19Interfaces\Calculator.cs" />
+    <Compile Include="Algorithms\Sorting\Challenge6QuickSort1Partition\Solution.cs" />
+    <Compile Include="Algorithms\Sorting\Challenge6QuickSort1Partition\Extensions.cs" />
+    <Compile Include="Algorithms\Sorting\Challenge7QuickSort2Sorting\Solution.cs" />
+    <Compile Include="Algorithms\Sorting\Challenge7QuickSort2Sorting\Extensions.cs" />
+    <Compile Include="30DaysOfCode\Day20ReviewPlusMoreStringMethods\Solution.cs" />
+    <Compile Include="30DaysOfCode\Day21Generics\Solution.cs" />
+    <Compile Include="30DaysOfCode\Day22BinarySearchTrees\Solution.cs" />
+    <Compile Include="30DaysOfCode\Day22BinarySearchTrees\BinaryTreeNode.cs" />
+    <Compile Include="30DaysOfCode\Day23BinaryTreeReview\Solution.cs" />
+    <Compile Include="30DaysOfCode\Day23BinaryTreeReview\BinaryTreeNode.cs" />
+    <Compile Include="Algorithms\Strings\Challenge10PalindromeIndex\Solution.cs" />
+    <Compile Include="30DaysOfCode\Day24MoreReviewMoreLinkedLists\Solution.cs" />
+    <Compile Include="30DaysOfCode\Day24MoreReviewMoreLinkedLists\LinkedListNode.cs" />
+    <Compile Include="Algorithms\Strings\Challenge5GemStones\Solution.cs" />
+    <Compile Include="Algorithms\Strings\Challenge6MakeItAnagram\Solution.cs" />
+    <Compile Include="Algorithms\Strings\Challenge6MakeItAnagram\Extensions.cs" />
+    <Compile Include="Algorithms\Strings\Challenge7Anagram\Solution.cs" />
+    <Compile Include="Algorithms\Strings\Challenge7Anagram\Extensions.cs" />
+    <Compile Include="30DaysOfCode\Day25RunningTime\Solution.cs" />
+    <Compile Include="30DaysOfCode\Day25RunningTime\Extensions.cs" />
+    <Compile Include="30DaysOfCode\Day26TestingPart1\Solution.cs" />
+    <Compile Include="30DaysOfCode\Day27TestingPart2\Solution.cs" />
+    <Compile Include="30DaysOfCode\Day27TestingPart2\TestCase.cs" />
+    <Compile Include="30DaysOfCode\Day28RegexPatterns\Solution.cs" />
+    <Compile Include="30DaysOfCode\Day29LookAtEverything\Solution.cs" />
+    <Compile Include="Algorithms\Implementation\Challenge10TheGridSearch\Solution.cs" />
+    <Compile Include="Algorithms\DynamicProgramming\Challenge1FibonacciModified\Solution.cs" />
+    <Compile Include="Algorithms\DynamicProgramming\Challenge2MaximumSubarray\Solution.cs" />
+    <Compile Include="Algorithms\DynamicProgramming\Challenge2MaximumSubarray\SubArraySums.cs" />
+    <Compile Include="Algorithms\DynamicProgramming\Challenge2MaximumSubarray\Extensions.cs" />
+    <Compile Include="Algorithms\Implementation\Challenge10TheGridSearch\StringArrayExtensions.cs" />
+    <Compile Include="Algorithms\DynamicProgramming\Challenge3CoinChangeProblem\Solution.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Folder Include="30DaysOfCode\" />
+    <Folder Include="Algorithms\" />
+    <Folder Include="Algorithms\Warmup\" />
+    <Folder Include="30DaysOfCode\Day0PrintHelloWorld\" />
+    <Folder Include="30DaysOfCode\Day1DataTypes\" />
+    <Folder Include="30DaysOfCode\Day2Arithmetic\" />
+    <Folder Include="30DaysOfCode\Day3IfElseStatements\" />
+    <Folder Include="30DaysOfCode\Day4BooleanOperatorsClassVsInstance\" />
+    <Folder Include="Algorithms\Warmup\Challenge1SimpleArraySum\" />
+    <Folder Include="Algorithms\Warmup\Challenge2AVeryBigSum\" />
+    <Folder Include="Algorithms\Warmup\Challenge0SolveMeFirst\" />
+    <Folder Include="Algorithms\Warmup\Challenge3DiagonalDifference\" />
+    <Folder Include="Algorithms\Warmup\Challenge4PlusMinus\" />
+    <Folder Include="Algorithms\Warmup\Challenge5StairCase\" />
+    <Folder Include="Algorithms\Warmup\Challenge6TimeConversion\" />
+    <Folder Include="Algorithms\Implementation\" />
+    <Folder Include="Algorithms\Implementation\Challenge1AngryProfessor\" />
+    <Folder Include="Algorithms\Implementation\Challenge2SherlockandTheBeast\" />
+    <Folder Include="30DaysOfCode\Day5Loops\" />
+    <Folder Include="Algorithms\Implementation\Challenge3UtopeanTree\" />
+    <Folder Include="Algorithms\Implementation\Challenge4FindDigits\" />
+    <Folder Include="30DaysOfCode\Day6Review\" />
+    <Folder Include="Algorithms\Implementation\Challenge5SherlockAndSquares\" />
+    <Folder Include="30DaysOfCode\Day7Arrays\" />
+    <Folder Include="Algorithms\Implementation\Challenge6ServiceLane\" />
+    <Folder Include="Algorithms\Implementation\Challenge7CutTheSticks\" />
+    <Folder Include="Algorithms\Implementation\Challenge8ChocolateFeast\" />
+    <Folder Include="30DaysOfCode\Day8DictionariesAndMaps\" />
+    <Folder Include="DataStructures\" />
+    <Folder Include="DataStructures\Challenge1ArraysDS\" />
+    <Folder Include="DataStructures\Challenge22DArrayDS\" />
+    <Folder Include="30DaysOfCode\Day9Recursion\" />
+    <Folder Include="Algorithms\Strings\" />
+    <Folder Include="Algorithms\Strings\Challenge1Pangrams\" />
+    <Folder Include="Algorithms\Strings\Challenge2FunnyString\" />
+    <Folder Include="Algorithms\Strings\Challenge3AlternatingCharacters\" />
+    <Folder Include="Algorithms\Strings\Challenge4GameOfThrones1\" />
+    <Folder Include="30DaysOfCode\Day10BinaryNumbers\" />
+    <Folder Include="30DaysOfCode\Day112DArraysMoreReview\" />
+    <Folder Include="Algorithms\Implementation\Challenge9CaesarCipher\" />
+    <Folder Include="Algorithms\BitManipulation\" />
+    <Folder Include="Algorithms\BitManipulation\Challenge1LonelyInteger\" />
+    <Folder Include="Algorithms\BitManipulation\Challenge2MaximizingXOR\" />
+    <Folder Include="30DaysOfCode\Day12Inheritance\" />
+    <Folder Include="Algorithms\Search\" />
+    <Folder Include="Algorithms\Search\Challenge1SherlockAndArray\" />
+    <Folder Include="30DaysOfCode\Day13AbstractClasses\" />
+    <Folder Include="Algorithms\Strings\Challenge8TwoStrings\" />
+    <Folder Include="30DaysOfCode\Day14ScopeAndImports\" />
+    <Folder Include="30DaysOfCode\Day15LinkedList\" />
+    <Folder Include="Algorithms\Sorting\" />
+    <Folder Include="Algorithms\Sorting\Challenge1IntroToTutorialChallenges\" />
+    <Folder Include="Algorithms\Sorting\Challenge2InsertionSortPart1\" />
+    <Folder Include="Algorithms\Sorting\Challenge3InsertionSortPart2\" />
+    <Folder Include="Algorithms\Sorting\Challenge4CorrectnessAndLoopInvariant\" />
+    <Folder Include="Algorithms\Sorting\Challenge5RunningTimeOfAlgorithms\" />
+    <Folder Include="30DaysOfCode\Day16Sorting\" />
+    <Folder Include="30DaysOfCode\Day17Exceptions\" />
+    <Folder Include="30DaysOfCode\Day18QueueAndStacks\" />
+    <Folder Include="Algorithms\Strings\Challenge9SherlockAndAnagrams\" />
+    <Folder Include="30DaysOfCode\Day19Interfaces\" />
+    <Folder Include="Algorithms\Sorting\Challenge6QuickSort1Partition\" />
+    <Folder Include="Algorithms\Sorting\Challenge7QuickSort2Sorting\" />
+    <Folder Include="30DaysOfCode\Day20ReviewPlusMoreStringMethods\" />
+    <Folder Include="30DaysOfCode\Day21Generics\" />
+    <Folder Include="30DaysOfCode\Day22BinarySearchTrees\" />
+    <Folder Include="30DaysOfCode\Day23BinaryTreeReview\" />
+    <Folder Include="Algorithms\Strings\Challenge10PalindromeIndex\" />
+    <Folder Include="30DaysOfCode\Day24MoreReviewMoreLinkedLists\" />
+    <Folder Include="Algorithms\Strings\Challenge5GemStones\" />
+    <Folder Include="Algorithms\Strings\Challenge6MakeItAnagram\" />
+    <Folder Include="Algorithms\Strings\Challenge7Anagram\" />
+    <Folder Include="30DaysOfCode\Day25RunningTime\" />
+    <Folder Include="30DaysOfCode\Day27TestingPart2\" />
+    <Folder Include="30DaysOfCode\Day26TestingPart1\" />
+    <Folder Include="30DaysOfCode\Day28RegexPatterns\" />
+    <Folder Include="30DaysOfCode\Day29LookAtEverything\" />
+    <Folder Include="Algorithms\Implementation\Challenge10TheGridSearch\" />
+    <Folder Include="Algorithms\DynamicProgramming\" />
+    <Folder Include="Algorithms\DynamicProgramming\Challenge1FibonacciModified\" />
+    <Folder Include="Algorithms\DynamicProgramming\Challenge2MaximumSubarray\" />
+    <Folder Include="Algorithms\DynamicProgramming\Challenge3CoinChangeProblem\" />
+  </ItemGroup>
+</Project>

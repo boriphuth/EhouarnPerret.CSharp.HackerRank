@@ -1,0 +1,15 @@
+﻿<Properties StartupItem="EhouarnPerret.CSharp.HackerRank.Sandbox\EhouarnPerret.CSharp.HackerRank.Sandbox.csproj" RefactoringSettings.EnableRefactorings="True">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="EhouarnPerret.CSharp.HackerRank.Sandbox\Algorithms\Implementation\Challenge10TheGridSearch\StringArrayExtensions.cs">
+    <Files>
+      <File FileName="EhouarnPerret.CSharp.HackerRank.Sandbox\Algorithms\Implementation\Challenge10TheGridSearch\StringArrayExtensions.cs" Line="1" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Breakpoint file="C:\Users\Ehouarn\Copy\Github\Ehouarn Perret\EhouarnPerret.CSharp.HackerRank\EhouarnPerret.CSharp.HackerRank\EhouarnPerret.CSharp.HackerRank.Sandbox\Algorithms\DynamicProgramming\Challenge2MaximumSubarray\Solution.cs~" line="38" column="1" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <AuthorInfo Name="Ehouarn Perret" Email="ehouarn.perret@outlook.com" Copyright="Ehouarn Perret" Company="" Trademark="" />
+</Properties>
