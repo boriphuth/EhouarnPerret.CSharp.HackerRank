@@ -33,7 +33,7 @@ namespace EhouarnPerret.CSharp.HackerRank.Sandbox.Algorithms.Implementation.Chal
         {
             var testCaseCount = Convert.ToInt32(Console.ReadLine());
 
-            for (var testCase = 0; testCase < 1; testCase++)
+            for (var testCase = 0; testCase < testCaseCount; testCase++)
             {
                 var gridRowColumnCount = Console.ReadLine().Split(' ');
                 var gridRowCount = Convert.ToInt32(gridRowColumnCount[0]);

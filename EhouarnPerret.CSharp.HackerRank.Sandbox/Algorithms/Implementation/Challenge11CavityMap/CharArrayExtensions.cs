@@ -1,5 +1,5 @@
-﻿//
-// Solution.cs
+//
+// CharArrayExtensions.cs
 //
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
@@ -23,45 +23,47 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
+
 using System;
 using System.Text;
+using System.Collections;
 
 namespace EhouarnPerret.CSharp.HackerRank.Sandbox.Algorithms.Implementation.Challenge11CavityMap
 {
-    public static class Solution
+
+    public static class CharArrayExtensions
     {
-        public static void Main(params String[] arguments)
+        public static void MarkGridCavities(this Char[,] grid)
         {
-            var gridSize = Convert.ToByte(Console.ReadLine());
+            var gridWidth = grid.GetLength(0);
+            var gridHeight = grid.GetLength(1);
 
-            var grid = new Char[gridSize, gridSize];
-
-            for(var gridRowIndex = 0; gridRowIndex < gridSize; gridRowIndex++)
+            if (gridWidth != gridHeight)
             {
-                var gridRow = Console.ReadLine().Substring(0, gridSize);
+                throw new ArgumentOutOfRangeException(nameof(grid));
+            }
+            else
+            {
+                var gridSize = gridWidth;
 
-                for (var gridColumnIndex = 0; gridColumnIndex < gridSize; gridColumnIndex++)
+                for (var gridRowIndex = 1; gridRowIndex <= (gridSize - 2); gridRowIndex++)
                 {
-                    grid[gridRowIndex, gridColumnIndex] = gridRow[gridColumnIndex];   
+                    for (var gridColumnIndex = 1; gridColumnIndex <= (gridSize - 2); gridColumnIndex++)
+                    {
+                        var north = grid[gridRowIndex - 1, gridColumnIndex];
+                        var south = grid[gridRowIndex + 1, gridColumnIndex];
+                        var west  = grid[gridRowIndex, gridColumnIndex - 1];
+                        var east  = grid[gridRowIndex, gridColumnIndex + 1];
+
+                        var center =  grid[gridRowIndex, gridColumnIndex];
+
+                        if ((north.CompareTo(center) < 0) && (south.CompareTo(center) < 0) && (west.CompareTo(center) < 0) && (east.CompareTo(center) < 0))
+                        {
+                            grid[gridRowIndex, gridColumnIndex] = 'X';
+                        }
+                    }
                 }
             }
-
-            grid.MarkGridCavities();
-
-            var stringBuilder = new StringBuilder();
-
-            for(var gridRowIndex = 0; gridRowIndex < gridSize; gridRowIndex++)
-            {
-                for (var gridColumnIndex = 0; gridColumnIndex < gridSize; gridColumnIndex++)
-                {
-                    stringBuilder.Append(grid[gridRowIndex, gridColumnIndex]);
-                }
-
-                stringBuilder.Append(Environment.NewLine);
-            }
-
-            Console.Write(stringBuilder.ToString());
         }
     }
 }
-

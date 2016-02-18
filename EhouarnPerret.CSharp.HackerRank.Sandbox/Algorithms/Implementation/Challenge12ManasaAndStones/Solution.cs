@@ -24,43 +24,19 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-using System.Text;
 
-namespace EhouarnPerret.CSharp.HackerRank.Sandbox.Algorithms.Implementation.Challenge11CavityMap
+namespace EhouarnPerret.CSharp.HackerRank.Sandbox.Algorithms.Implementation.Challenge12ManasaAndStones
 {
     public static class Solution
     {
         public static void Main(params String[] arguments)
         {
-            var gridSize = Convert.ToByte(Console.ReadLine());
+            var testCaseCount = Convert.ToInt32(Console.ReadLine());
 
-            var grid = new Char[gridSize, gridSize];
-
-            for(var gridRowIndex = 0; gridRowIndex < gridSize; gridRowIndex++)
+            for (var testCase = 0; testCase < testCaseCount; testCase++)
             {
-                var gridRow = Console.ReadLine().Substring(0, gridSize);
 
-                for (var gridColumnIndex = 0; gridColumnIndex < gridSize; gridColumnIndex++)
-                {
-                    grid[gridRowIndex, gridColumnIndex] = gridRow[gridColumnIndex];   
-                }
             }
-
-            grid.MarkGridCavities();
-
-            var stringBuilder = new StringBuilder();
-
-            for(var gridRowIndex = 0; gridRowIndex < gridSize; gridRowIndex++)
-            {
-                for (var gridColumnIndex = 0; gridColumnIndex < gridSize; gridColumnIndex++)
-                {
-                    stringBuilder.Append(grid[gridRowIndex, gridColumnIndex]);
-                }
-
-                stringBuilder.Append(Environment.NewLine);
-            }
-
-            Console.Write(stringBuilder.ToString());
         }
     }
 }
