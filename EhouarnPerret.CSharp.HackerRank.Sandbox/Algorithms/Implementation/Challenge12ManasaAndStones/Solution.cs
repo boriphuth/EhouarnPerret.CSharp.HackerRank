@@ -35,6 +35,10 @@ namespace EhouarnPerret.CSharp.HackerRank.Sandbox.Algorithms.Implementation.Chal
 
             for (var testCase = 0; testCase < testCaseCount; testCase++)
             {
+                var n = Convert.ToUInt16(Console.ReadLine());
+                var a = Convert.ToUInt16(Console.ReadLine());
+                var b = Convert.ToUInt16(Console.ReadLine());
+
 
             }
         }
