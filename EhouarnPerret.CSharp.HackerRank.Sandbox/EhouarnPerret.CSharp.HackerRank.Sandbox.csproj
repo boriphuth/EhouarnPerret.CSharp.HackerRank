@@ -157,6 +157,7 @@
     <Compile Include="Algorithms\DynamicProgramming\Challenge2MaximumSubarray\Extensions.cs" />
     <Compile Include="Algorithms\Implementation\Challenge10TheGridSearch\StringArrayExtensions.cs" />
     <Compile Include="Algorithms\DynamicProgramming\Challenge3CoinChangeProblem\Solution.cs" />
+    <Compile Include="Algorithms\Implementation\Challenge11CavityMap\Solution.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -242,5 +243,6 @@
     <Folder Include="Algorithms\DynamicProgramming\Challenge1FibonacciModified\" />
     <Folder Include="Algorithms\DynamicProgramming\Challenge2MaximumSubarray\" />
     <Folder Include="Algorithms\DynamicProgramming\Challenge3CoinChangeProblem\" />
+    <Folder Include="Algorithms\Implementation\Challenge11CavityMap\" />
   </ItemGroup>
 </Project>

@@ -28,7 +28,6 @@ using System;
 
 namespace EhouarnPerret.CSharp.HackerRank.Sandbox.Algorithms.Implementation.Challenge10TheGridSearch
 {
-
     public static class StringArrayExtensions
     {
         public static Boolean Contains(this String[] grid, String[] pattern)

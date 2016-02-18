@@ -24,7 +24,7 @@
 // THE SOFTWARE.
 using System;
 
-using EhouarnPerret.CSharp.HackerRank.Sandbox.Algorithms.Implementation.Challenge10TheGridSearch;
+using EhouarnPerret.CSharp.HackerRank.Sandbox.Algorithms.Implementation.Challenge11CavityMap;
 
 namespace EhouarnPerret.CSharp.HackerRank.Sandbox
 {
